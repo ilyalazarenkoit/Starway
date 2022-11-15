@@ -1,9 +1,17 @@
 const axios = require('axios');
 
-const BASE_URl = 'https:api.themoviedb.org';
+const BASE_URl = 'https://api.themoviedb.org/3/trending/all/day?api_key=';
 const API_KEY = 'd7175633e0b5107da3a11b631113cb80';
 
 const markupPlace = document.querySelector('body');
+
+function getItem() {
+  return fetch(`${BASE_URl}${API_KEY}`);
+}
+
+getItem()
+  .then(response => response.json())
+  .then(response => console.log(response.results));
 
 function createMarkup() {
   return `<form>
