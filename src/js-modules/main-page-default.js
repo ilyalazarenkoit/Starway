@@ -1,20 +1,56 @@
-const film_list = document.querySelector('.film__list')
+import {genres} from "./genres"
+
+let processed; 
+let film_list = document.querySelector('.film__list')
+let markup = '';
+const TRENDING_URL = "https://api.themoviedb.org/3/trending/movie/day?api_key="
+const API_KEY = "d7175633e0b5107da3a11b631113cb80"
+const LANGUAGE = "&language=en-US"
+
 
 
 window.addEventListener("load", onLoad);
+
+function getGenreByID (array, ids) {
+processed =  ids.map(id => array.find(item => item.id === id).name)
+if (processed.length > 3) {
+    processed.splice(2, processed.length - 2, "Other")
+}
+let str = processed.join(", ")
+   return str;
+}
+// function getTitle (title) {
+//     if(title.length)
+// }
 
 function onLoad () {
     
 }
 
-function renderDefaultMarkup () {
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=d7175633e0b5107da3a11b631113cb80&query="john"&rating=6`).then(response => response.json()).then(response => console.log(response))
+function renderMarkup(response) {
+    markup = response.results.map(item => {
+        
+        return `<li class="film__card">
+            <a class="film__link" href=""></a>
+            <img class="film__img" src="https://image.tmdb.org/t/p/w500/${item.poster_path}" alt=${item.title}>
+            <h2 class="film__name">${item.title}</h2>
+            <p class="film__genre">${getGenreByID(genres, item.genre_ids)} | ${item.release_date.slice(0,4)}</p>
+            </li>`
+    }).join("")
+    film_list.innerHTML = markup;
 }
 
+function fetchTrendingFilms () {
+    fetch(`${TRENDING_URL}${API_KEY}${LANGUAGE}`)
+    .then(response => {
+       return response.json()  
+    })
+    .then(response => {
+    response.results.sort((a,b) => b.vote_average - a.vote_average)
+    renderMarkup(response)
+    
+})
+}
 
-renderDefaultMarkup();
+fetchTrendingFilms()
 
-console.log("hello world")
-
-
-export {film_list, onLoad, renderDefaultMarkup}
