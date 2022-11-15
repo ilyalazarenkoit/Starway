@@ -9,7 +9,7 @@ const LANGUAGE = "&language=en-US"
 
 
 
-window.addEventListener("load", onLoad);
+window.addEventListener("load", fetchTrendingFilms);
 
 function getGenreByID (array, ids) {
 processed =  ids.map(id => array.find(item => item.id === id).name)
@@ -19,13 +19,7 @@ if (processed.length > 3) {
 let str = processed.join(", ")
    return str;
 }
-// function getTitle (title) {
-//     if(title.length)
-// }
 
-function onLoad () {
-    
-}
 
 function renderMarkup(response) {
     markup = response.results.map(item => {
@@ -52,5 +46,4 @@ function fetchTrendingFilms () {
 })
 }
 
-fetchTrendingFilms()
 
