@@ -17,7 +17,7 @@ export function createMarkupMovieInfo(
 
   const markup = `
         <div class="modal_poster">
-                <img class="modal_poster__img lazyload" src="${imgUrl}/w500${poster_path}"
+                <img class="modal_poster__img" src="${imgUrl}/w500${poster_path}"
                 srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
             data-srcset="${imgUrl}/w500${poster_path} 500w,         
             ${imgUrl}/w780${poster_path} 780w,
