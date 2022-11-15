@@ -1,4 +1,25 @@
 .film__card {
-    width:300px;
-    height: 500px;
+    width:395px;
+    height: 634px;
+    margin-bottom:16px;
+}
+.film__img {
+    height:560px;
+    width:395px;
+}
+
+.film__name {
+    text-transform: uppercase;
+ display: inline-block;
+ margin-top:12px;
+ font-size:20px;
+ line-height: 1.2;
+ font-weight: 500;
+}
+
+.film__genre {
+    color:var(--orange-color);
+    font-size:20px;
+    line-height: 1.2;
+    font-weight: 500;
 }
