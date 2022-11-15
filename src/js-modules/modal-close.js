@@ -1,8 +1,8 @@
 const overlay = document.querySelector('.modal__backdrop');
 const modalCardMovie = document.querySelector('.modal_movie_card');
-const modalclose = document.querySelector('.modal__close-btn');
+const modalClose = document.querySelector('.modal__close-btn');
 
-modalclose.addEventListener('click', onModalCloseBtn);
+modalClose.addEventListener('click', onModalCloseBtn);
 
 function onModalCloseBtn() {
   modalCardMovie.innerHTML = '';
