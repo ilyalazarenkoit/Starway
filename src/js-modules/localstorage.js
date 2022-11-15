@@ -20,7 +20,12 @@ const data = getData().then(data => {
 });
 console.log(addFilm);
 function markup() {
-  return `<div class="films"><ul>
+  return `<div class="films">
+  <form><button>1</button>
+  <button>2</button>
+  </form>
+  
+  <ul>
         <li> <p class="info-item">
                         <b>Likes</b>${addFilm}
                       </p></li></ul>
