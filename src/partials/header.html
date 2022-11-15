@@ -17,15 +17,21 @@
             </ul>
         </nav>
         <div class="header__render">
-            <form class="header__form search">
-                <input type="text" placeholder="Movie search" class="search__input">
-                <button type="submit" class="search__submit">
-                    <svg width="12" height="12">
-                        <use href="./images/symbol-defs.svg#search-icon"></use>
-                    </svg>
-                </button>
-            </form>
-            <p class="search__error">Search result not successful. Enter the correct movie name and </p>
+            <div class="render__home">
+                <form class="header__form search">
+                    <input type="text" placeholder="Movie search" class="search__input">
+                    <button type="submit" class="search__submit">
+                        <svg width="12" height="12">
+                            <use href="./images/symbol-defs.svg#search-icon"></use>
+                        </svg>
+                    </button>
+                </form>
+                <p class="search__error">Search result not successful. Enter the correct movie name and </p>
+            </div>
+            <div class="render__library">
+                <button class="header__button enable">Watched</button>
+                <button class="header__button">queue</button>
+            </div>
         </div>
 
     </div>
