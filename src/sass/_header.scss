@@ -81,7 +81,11 @@
 .navigation__list {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 15px;
+
+    @media screen and(min-width:480px) {
+        gap: 40px;
+    }
 }
 
 .navigation__logo {
@@ -121,6 +125,34 @@
     width: 100%;
     height: 3px;
     background-color: red;
+}
+
+.navigation__sign-in,
+.navigation__sign-out {
+    background-color: #FF6B01;
+    border: 1px solid #FF6B01;
+    box-shadow: 0px 0px 15px -3px #FF6B01;
+    padding: 7px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition-duration: 500ms;
+
+    &:hover {
+        background-color: transparent;
+    }
+}
+
+.navigation__sign-out {
+    display: none;
+}
+
+.sign__in-link,
+.sign__out-link {
+    color: var(--secondary-color-of-text);
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.17;
 }
 
 .header__form {
