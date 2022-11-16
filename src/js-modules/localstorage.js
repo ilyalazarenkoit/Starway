@@ -24,8 +24,8 @@ function getItem(id) {
 
 // function createMarkup() {
 //   return `<form>
-//             <button  class="add-library-watched"  data-id="505642" type="button">AddWatched</button>
-//             <button class="add-library-queue"  data-id="505642" type="button" >AddQueue</button>
+//             <button  class="add-library-watched"  data-id="505644" type="button">AddWatched</button>
+//             <button class="add-library-queue"  data-id="505644" type="button" >AddQueue</button>
 
 //             <button  class="library-watched" type="button">Watched</button>
 //             <button class="library-queue" type="button" >queue</button>
@@ -33,10 +33,11 @@ function getItem(id) {
 // }
 // markupPlace.innerHTML = createMarkup();
 
-const handleButtonClickAddWatched = document.querySelector(
-  '.add-library-watched'
-);
-const handleButtonClickAddQueue = document.querySelector('.add-library-queue');
+// const handleButtonClickAddWatched = document.querySelector(
+//   '.add-library-watched'
+// );
+// const handleButtonClickAddQueue = document.querySelector('.add-library-queue');
+
 const handleButtonClickWatched = document.querySelector('.library-watched');
 const handleButtonClickQueue = document.querySelector('.library-queue');
 
@@ -59,6 +60,7 @@ function openLibrary(kay) {
   return dataW ? JSON.parse(dataW) : [];
 }
 
+//кнопка
 function openWatchedLibrary() {
   const dataW = localStorage.getItem('arrWatched');
   console.log(dataW);
