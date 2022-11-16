@@ -1,21 +1,30 @@
 .film__card {
-    width:395px;
-    height: 634px;
-    margin-bottom:20px;
+    width:280px;
     position: relative;
     border-radius: 5%;
-
-    @media screen and (max-width:768px) {
+    
+    @media screen and (min-width:768px) {
     width:336px;
+    }
+    @media screen and (min-width:1280px) {
+    width:395px;
     }
 }
 .film__img {
+    height:402px;
     width:100%;
     border-top-left-radius: 5%;
     border-top-right-radius:5%;
+    @media screen and (min-width:768px) {
+        height: 455px;
+    }
+    @media screen and (min-width:1280px) {
+        height: 574px;
+    }
 }
 .film__wrapper {
     padding:12px;
+    padding-bottom:16px;
 }
 
 .film__name {
@@ -32,6 +41,18 @@
     line-height: 1.2;
     font-weight: 500;
 }
+.film__rate {
+    text-align: center;
+    position:absolute;
+    width:30px;
+    height: 20px;
+    top:20px;
+    right:20px;
+    background-color: var(--orange-color);
+    color:white;
+    border-radius: 5px;
+}
+
 .film__rate {
     text-align: center;
     position:absolute;
