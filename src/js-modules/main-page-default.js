@@ -23,7 +23,6 @@ let str = processed.join(", ")
 
 function renderMarkup(response) {
     markup = response.results.map(item => {
-        
         return `<li class="film__card">
             <a class="film__link" href=""></a>
             <img class="film__img" src="https://image.tmdb.org/t/p/w500/${item.poster_path}" alt=${item.title}>
@@ -42,7 +41,6 @@ function fetchTrendingFilms () {
     .then(response => {
     response.results.sort((a,b) => b.vote_average - a.vote_average)
     renderMarkup(response)
-    
 })
 }
 
