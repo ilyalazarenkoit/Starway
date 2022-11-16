@@ -1,0 +1,39 @@
+<section class="auth">
+    <button class="auth__close">
+        <svg width="30" height="30" class="auth__close-icon">
+            <use href="./images/symbol-defs.svg#close-icon"></use>
+        </svg>
+    </button>
+    <div class="auth__wrapper">
+        <div class="auth__sign sign">
+            <div class="sign__top">
+                <p class="sign__header">Sign In</p>
+                <button type="button" class="sign__register sign__login">Register</button>
+            </div>
+            <form class="sign__form js-sign">
+                <input type="email" required placeholder="Enter your email..."
+                    class="sign__email sign__input js-sign-email">
+                <input type="password" required placeholder="Enter your password..."
+                    class="sign__password sign__input js-sign-password">
+                <button type="submit" class="sign__submit">Sign In</button>
+                <p class="sign__error js-sign-error">Error... This user is not found. Your email or password is wrond!
+                </p>
+            </form>
+        </div>
+        <div class="auth__login login">
+            <div class="login__top sign__top">
+                <p class="sign__header">Log In</p>
+                <button type="button" class="sign__register login__sign">Sign In</button>
+            </div>
+            <form class="sign__form js-login">
+                <input type="text" required placeholder="Enter your name..." class="sign__input js-login-name">
+                <input type="email" required placeholder="Enter your email..."
+                    class="sign__email sign__input js-login-email">
+                <input type="password" required minlength="8" placeholder="Enter your password..."
+                    class="sign__password sign__input js-login-password">
+                <button type="submit" class="sign__submit">Log In</button>
+                <p class="login__error js-login-error">Error... This email is already in use</p>
+            </form>
+        </div>
+    </div>
+</section>
