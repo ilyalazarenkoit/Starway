@@ -10,12 +10,6 @@ import './js-modules/authentication-login';
 import './js-modules/authentication-sign';
 import './js-modules/is-auth';
 
-import {
-  film_list,
-  onLoad,
-  renderDefaultMarkup,
-} from './js-modules/main-page-default';
-
 import './js-modules/render-header';
 import './js-modules/loader';
 
