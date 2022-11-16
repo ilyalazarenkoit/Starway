@@ -7,7 +7,6 @@ const insertMarkup = document.querySelector('.modal_movie_card');
 console.log(insertMarkup);
 
 export function fetchFilmPick(id) {
-  console.log('ihgtipow7777777');
   return fetch(`${BASE_URl}${id}?language=en-US&api_key=${API_KEY}`).then(
     response => {
       if (!response.ok) {
@@ -18,28 +17,23 @@ export function fetchFilmPick(id) {
   );
 }
 
-function createMarkupMovieInfo(
+export function createMarkupMovieInfo({
   vote_average,
   vote_count,
   popularity,
   original_title,
-  genres,
+  genres = [],
   runtime,
   title,
   overview,
-  poster_path
-) {
+  poster_path,
+  id,
+}) {
   const imgUrl = `https://image.tmdb.org/t/p`;
   const genresList = genres.map(genre => genre.name).join(' / ');
-
-  return `<div class="modal_poster">
-                <img class="modal_poster__img" src="${imgUrl}/w500${poster_path}"
-                srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-            data-srcset="${imgUrl}/w500${poster_path} 500w,         
-            ${imgUrl}/w780${poster_path} 780w,
-            ${imgUrl}/original${poster_path} 900w"
-            data-sizes="auto"          
-                alt="${title}"/>
+  console.log(poster_path);
+  const markup = `<div class="modal_poster">
+                <img class="modal_poster__img" src="${imgUrl}/w500${poster_path}" alt="${title}"/>
         </div>
         <div class="modal_info">
             <div class="wrapper_info">
@@ -67,8 +61,5 @@ function createMarkupMovieInfo(
             </div>
             
         </div>`;
+  insertMarkup.innerHTML = markup;
 }
-
-insertMarkup.innerHTML = createMarkupMovieInfo();
-
-function getDataFilm() {}
