@@ -1,3 +1,7 @@
+import './main-page-default';
+
+const insertMarkup = document.querySelector('.modal_movie_card');
+console.log(insertMarkup);
 export function createMarkupMovieInfo(
   {
     vote_average,
@@ -10,7 +14,7 @@ export function createMarkupMovieInfo(
     overview,
     poster_path,
   },
-  elem
+  insertMarkup
 ) {
   const imgUrl = `https://image.tmdb.org/t/p`;
   const genresList = genres.map(genre => genre.name).join(' / ');
@@ -52,5 +56,7 @@ export function createMarkupMovieInfo(
             
         </div>`;
 
-  elem.insertAdjacentHTML('beforeend', markup);
+  insertMarkup.insertAdjacentHTML('beforeend', markup);
 }
+
+createMarkupMovieInfo();
