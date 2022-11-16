@@ -1,0 +1,73 @@
+.modal_movie_card {
+  display: flex;
+  padding: 30px 12px;
+}
+
+.modal_poster {
+  height: 100%;
+  border-radius: 3%;
+  margin-right: 20px;
+  box-shadow: 2px 2px 20px 3px #5b50506b;
+}
+
+.modal_poster__img {
+  border-radius: 3%;
+}
+// ==========================
+.modal_info {
+  height: 100%;
+  width: 100%;
+}
+
+.wrapper_info {
+  margin-bottom: 25px;
+}
+
+.modal_info__title {
+  margin-bottom: 17px;
+  padding-top: 10px;
+}
+
+.info_data {
+}
+
+.modal_info__list {
+}
+
+.modal_info__item {
+  margin-bottom: 10px;
+}
+
+.modal_info_render__item {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  color: rgb(37, 150, 190);
+}
+// ======================
+.wrapper_about {
+}
+
+.about__title {
+  margin-bottom: 3px;
+  font-weight: 500;
+}
+
+.about__description {
+  color: #174353;
+}
+
+// ========================
+.wrapper_btn {
+}
+
+.modal_btn {
+  height: 40px;
+  width: 134px;
+  margin-left: 6px;
+  margin-top: 13px;
+
+  border: 1px solid rgb(37, 150, 190);
+  border-radius: 10%;
+  background-color: transparent;
+}

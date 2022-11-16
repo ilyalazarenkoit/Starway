@@ -58,6 +58,9 @@ export function createMarkupMovieInfo({
               
                 <button class="modal_btn btn_queue" type="button" data-id="${id}">
                 </button>
+
+                <button class="modal_btn btn_trailer" type="button" data-id="${id}">
+                </button>
             </div>
             
         </div>`;
