@@ -22,29 +22,19 @@ function getItem(id) {
   );
 }
 
-// function createMarkup() {
-//   return `<form>
-//             <button  class="add-library-watched"  data-id="505644" type="button">AddWatched</button>
-//             <button class="add-library-queue"  data-id="505644" type="button" >AddQueue</button>
+// const handleButtonClickAddWatched = document.querySelector('.btn_add' );            // Кнопки Артура
+//
+//
+// const handleButtonClickAddQueue = document.querySelector('btn_queue'); //btn_queue // Кнопки Артура
 
-//             <button  class="library-watched" type="button">Watched</button>
-//             <button class="library-queue" type="button" >queue</button>
-//           </form>`;
-// }
-// markupPlace.innerHTML = createMarkup();
-
-// const handleButtonClickAddWatched = document.querySelector(
-//   '.add-library-watched'
-// );
-// const handleButtonClickAddQueue = document.querySelector('.add-library-queue');
-
-const handleButtonClickWatched = document.querySelector('.library-watched');
-const handleButtonClickQueue = document.querySelector('.library-queue');
+const handleButtonClickWatched = document.querySelector('.library-watched'); //  Кнопки На хедері
+const handleButtonClickQueue = document.querySelector('.library-queue'); //  Кнопки На хедері
 
 // handleButtonClickAddWatched.addEventListener('click', event => {
 //   const id = event.target.dataset.id;
 //   addWatchedLibrary(id);
 // });
+
 // handleButtonClickAddQueue.addEventListener('click', event => {
 //   const id = event.target.dataset.id;
 //   addQueueLibrary(id);
@@ -53,19 +43,18 @@ const handleButtonClickQueue = document.querySelector('.library-queue');
 handleButtonClickWatched.addEventListener('click', openWatchedLibrary);
 handleButtonClickQueue.addEventListener('click', openQueueLibrary);
 
-// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 function openLibrary(kay) {
   const dataW = localStorage.getItem(kay);
   return dataW ? JSON.parse(dataW) : [];
 }
 
-//кнопка
+//кнопка Watchad
 function openWatchedLibrary() {
   const dataW = localStorage.getItem('arrWatched');
   console.log(dataW);
 }
 
+//кнопка Queue
 function openQueueLibrary() {
   const dataQ = localStorage.getItem('arrQueue');
   console.log(dataQ);

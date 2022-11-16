@@ -19,10 +19,10 @@ function getGenreByID(array, ids = []) {
 }
 
 export function renderMarkup(results) {
-  console.log(results);
+  // console.log(results);
   markup = results
     .map(item => {
-      console.log(item);
+      // console.log(item);
       return `<li class="film__card">
             <a class="film__link" href=""></a>
             <img class="film__img" src="https://image.tmdb.org/t/p/w500/${
