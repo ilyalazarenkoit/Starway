@@ -22,7 +22,7 @@ export function onInputSearch(event) {
     .getFilmsByQuery()
     .then(({ results }) => {
       if (results.length === 0) {
-        Notiflix.Notify.failure('No such movie');
+        Notiflix.Notify.failure('Sorry, films not found');
         return;
       }
       return renderMarkup(results);
