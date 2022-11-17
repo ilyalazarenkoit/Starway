@@ -23,7 +23,7 @@ export function renderMarkup(results) {
   markup = results
     .map(item => {
       console.log(item);
-      return `<li class="film__card">
+      return `<li class="film__card" data-id="${item.id}">
             <a class="film__link" href=""></a>
             <img class="film__img" src="https://image.tmdb.org/t/p/w500/${
               item.poster_path

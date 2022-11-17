@@ -4,7 +4,6 @@ const BASE_URl = 'https://api.themoviedb.org/3/movie/';
 const API_KEY = 'd7175633e0b5107da3a11b631113cb80';
 
 const insertMarkup = document.querySelector('.modal_movie_card');
-console.log(insertMarkup);
 
 export function fetchFilmPick(id) {
   return fetch(`${BASE_URl}${id}?language=en-US&api_key=${API_KEY}`).then(
@@ -31,7 +30,6 @@ export function createMarkupMovieInfo({
 }) {
   const imgUrl = `https://image.tmdb.org/t/p`;
   const genresList = genres.map(genre => genre.name).join(' / ');
-  console.log(poster_path);
   const markup = `<div class="modal_poster">
                 <img class="modal_poster__img" src="${imgUrl}/w500${poster_path}" alt="${title}"/>
         </div>
@@ -53,13 +51,13 @@ export function createMarkupMovieInfo({
             <p class="about__description">${overview}</p>
             </div>
             <div class="wrapper_btn">
-                <button class="modal_btn btn_add" type="button" data-id="${id}">
+                <button class="modal_btn btn_add" type="button" data-id="${id}">add to Watched
                 </button>
               
-                <button class="modal_btn btn_queue" type="button" data-id="${id}">
+                <button class="modal_btn btn_queue" type="button" data-id="${id}">add to queue
                 </button>
 
-                <button class="modal_btn btn_trailer" type="button" data-id="${id}">
+                <button class="modal_btn btn_trailer" type="button" data-id="${id}">Trailer
                 </button>
             </div>
             
