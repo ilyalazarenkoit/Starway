@@ -23,18 +23,20 @@ export function renderMarkup(results) {
   markup = results
     .map(item => {
       console.log(item);
-      return `<li class="film__card">
-            <a class="film__link" href=""></a>
+      return `<li class="film__card" data-id="${item.id}">
             <img class="film__img" src="https://image.tmdb.org/t/p/w500/${
               item.poster_path
             }" alt=${item.title}>
+            <div class="film__wrapper">
             <h2 class="film__name">${item.title}</h2>
             <p class="film__genre">${getGenreByID(genres, item.genre_ids)} | ${(
         item.release_date ||
         item.first_air_date ||
         ''
       ).slice(0, 4)}</p>
-            </li>`;
+      <p class="film__rate">${item.vote_average.toFixed(1)}</p>
+      </div>
+      </li>`;
     })
     .join('');
   film_list.innerHTML = markup;
