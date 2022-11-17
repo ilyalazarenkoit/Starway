@@ -62,7 +62,3 @@ export function fetchTrendingFilms() {
     })
     .catch(error => console.log(error));
 }
-
-function nextPage(page) {
-  page += 1;
-}
