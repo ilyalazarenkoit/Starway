@@ -3,6 +3,9 @@ import { genres } from './genres';
 let processed;
 let film_list = document.querySelector('.film__list');
 let markup = '';
+export let page = 1;
+export let insertPage = `&page=${page}`
+let totalPages;
 const TRENDING_URL = 'https://api.themoviedb.org/3/trending/movie/day?api_key=';
 const API_KEY = 'd7175633e0b5107da3a11b631113cb80';
 const LANGUAGE = '&language=en-US';
@@ -42,14 +45,24 @@ export function renderMarkup(results) {
   film_list.innerHTML = markup;
 }
 
-function fetchTrendingFilms() {
-  fetch(`${TRENDING_URL}${API_KEY}${LANGUAGE}`)
+export function fetchTrendingFilms() {
+  fetch(`${TRENDING_URL}${API_KEY}${LANGUAGE}${insertPage}`)
     .then(response => {
+      if(!response.ok) {
+        throw new Error
+      }
       return response.json();
     })
     .then(response => {
-
+      totalPages = response.total_pages
+      console.log(totalPages)
+      console.log(response)
       response.results.sort((a, b) => b.vote_average - a.vote_average);
       renderMarkup(response.results);
-    });
+    })
+    .catch(error => console.log(error));
+}
+
+function nextPage(page) {
+  page += 1;
 }
