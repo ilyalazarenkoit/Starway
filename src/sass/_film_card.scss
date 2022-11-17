@@ -2,6 +2,15 @@
     width:280px;
     position: relative;
     border-radius: 5px;
+    z-index: 1;
+    &:hover {
+            -webkit-transform: scale(1.03);
+            -ms-transform: scale(1.03);
+            transform: scale(1.03);
+            transition-duration: 0.5s;
+            z-index: 2;
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+      }
     
     @media screen and (min-width:768px) {
     width:336px;
@@ -25,9 +34,11 @@
 .film__wrapper {
     padding-right:5px;
     padding-top:10px;
+    padding-left:5px;
+    padding-bottom:5px;
     
     @media screen and (min-width:768px) {
-      padding-bottom: 0px;
+      padding-bottom: 5px;
       padding-right:7px;
       padding-top:8px;  
     }
@@ -73,5 +84,6 @@
     background-color: var(--orange-color);
     color:white;
     border-radius: 5px;
+    z-index: 3;
 }
 

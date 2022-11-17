@@ -43,6 +43,12 @@ export function renderMarkup(results) {
     })
     .join('');
   film_list.innerHTML = markup;
+  const film_card = document.querySelector(".film__card")
+  const rate = document.querySelector(".film__rate")
+  film_card.addEventListener("mouseover", () => {
+  rate.classList.add(".film__rate__transition")
+  })
+console.log(rate)
 }
 
 export function fetchTrendingFilms() {
