@@ -62,13 +62,18 @@
     font-size: 16px;
 }
 
-.footer-team-link {
+.footer__button {
     text-decoration: underline;
     color: #545454;
+    padding: 0;
+        border: 0px;
+        background-color: #f7f7f7;
+        cursor: pointer;
 
     &:hover,
     &:focus {
         text-shadow: #bbaf8d 1px 0 10px;
         color: var(--orange-color);
+        transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 }
