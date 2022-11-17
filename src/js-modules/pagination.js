@@ -74,18 +74,6 @@ export const pagination = new Pagination(container, options);
 //   });
 // });
 
-// async function fetchFilms() {
-//   try {
-//     await apiFilms.getPopularMovies();
-//     if (formSubmitted) {
-//       pagination.reset(newApiService.results);
-//     }
-//     formSubmitted = false;
-//   } catch {
-//     error => console.log(error);
-//   }
-// }
-
 pagination.on('beforeMove', event => {
   apiFilms.page = event.page;
   apiFilms
