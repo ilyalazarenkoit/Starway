@@ -1723,5 +1723,5 @@ const Zn=ae("authIdTokenMaxAge")||300;let ea=null;function ta(e=at()){const t=et
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */t.preventDefault(),(i=ga,n=va.value,a=xa.value,Ki(be(i),Oi.credential(n,a))).then((t=>{t.user;wa.style.visibility="hidden",localStorage.setItem("isAuth",!0),ya.style.visibility="hidden",ya.style.opacity=0,ra(),e(la).Notify.success("Congratulations! Login successful!"),ba.reset()})).catch((t=>{t.code;const i=t.message;e(la).Notify.failure(i),wa.style.visibility="visible"}))}));
-//# sourceMappingURL=index.32adc3cd.js.map
+ */t.preventDefault(),(i=ga,n=va.value,a=xa.value,Ki(be(i),Oi.credential(n,a))).then((t=>{t.user;wa.style.visibility="hidden",localStorage.setItem("isAuth",!0),ya.style.visibility="hidden",ya.style.opacity=0,ra(),e(la).Notify.success("Congratulations! Login successful!"),ba.reset()})).catch((t=>{t.code;const i=t.message;e(la).Notify.failure(i),wa.style.visibility="visible"}))}));const ka=document.getElementById("up-btn");window.onscroll=function(){ka.style.display=document.documentElement.scrollTop>300?"block":"none"},ka.addEventListener("click",(()=>{document.documentElement.scrollTop=0}));
+//# sourceMappingURL=index.64bc5c36.js.map
