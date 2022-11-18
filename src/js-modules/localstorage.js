@@ -76,8 +76,8 @@ library.addEventListener("click", openWatchedLibrary)
 handleButtonClickWatched.addEventListener('click', openWatchedLibrary);
 handleButtonClickQueue.addEventListener('click', openQueueLibrary);
 
-function renderLibraryFilms(results) {
-  film_list.innerHTML += `<li class="film__card" data-id="${results.id}">
+async function renderLibraryFilms(results) {
+  film_list.innerHTML +=  `<li class="film__card" data-id="${results.id}">
   <img class="film__img" src="https://image.tmdb.org/t/p/w500/${
     results.poster_path
   }" alt=${results.title}>
@@ -91,13 +91,13 @@ function renderLibraryFilms(results) {
 </div>
 </li>`
 }
-
-async function getGenre(genres) {
-  processed = await genres.map(item => item.name);
+function getGenre(genres) {
+  processed = genres.map(item => item.name);
   console.log(processed)
   if (processed.length > 3) {
     processed.splice(2, processed.length - 2, 'Other');
   }
   let str = processed.join(', ');
+  console.log(str);
   return str;
 }
