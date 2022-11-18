@@ -6,7 +6,7 @@ import Films__API from './api';
 const filmList = document.querySelector('.film__list');
 const apiFilms = new Films__API();
 const container = document.getElementById('pagination');
-formSubmitted = true;
+let formSubmitted = true;
 
 const options = {
   totalItems: 20000,
