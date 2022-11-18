@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export default class Films__API {
   constructor() {
@@ -9,7 +9,9 @@ export default class Films__API {
   }
 
   getPopularMovies() {
-    return axios(`${this.URL}/discover/movie?sort_by=popularity.desc&api_key=${this.KEY}&page=${this.page}&language=en-US&include_adult=false`).then(({ data }) => data);
+    return axios(
+      `${this.URL}/discover/movie?sort_by=popularity.desc&api_key=${this.KEY}&page=${this.page}&language=en-US&include_adult=false`
+    ).then(({ data }) => data);
   }
 
   getFilmsByQuery() {

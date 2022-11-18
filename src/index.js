@@ -13,3 +13,4 @@ import './js-modules/switch-theme';
 import './js-modules/arrow-up';
 import './js-modules/pagination';
 import './js-modules/api';
+import './js-modules/localstorage';
