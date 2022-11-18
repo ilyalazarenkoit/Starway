@@ -58,7 +58,6 @@ function openWatchedLibrary() {
     const watched = JSON.parse(unparsedWatched)
     watched.map(async id => {
       const results = await fetchFilmPick(id);
-      console.log(results)
       renderLibraryFilms(results)
     })
 }
