@@ -92,8 +92,9 @@ function renderLibraryFilms(results) {
 </li>`
 }
 
-function getGenre(genres) {
-  processed = genres.map(item => item.name);
+async function getGenre(genres) {
+  processed = await genres.map(item => item.name);
+  console.log(processed)
   if (processed.length > 3) {
     processed.splice(2, processed.length - 2, 'Other');
   }
