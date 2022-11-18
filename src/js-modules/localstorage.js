@@ -45,20 +45,6 @@ export function addToLibrary() {
       arrQueue.push(id);
       localStorage.setItem('arrQueue', JSON.stringify(arrQueue));
     }
-
-    function getDataFilms() {
-      const arrWatched = openLibrary('arrWatched');
-      const promises = [];
-      arrWatched.forEach(id => {
-        const promise = getItem(id);
-        promises.push(promise);
-      });
-      Promise.all(promises)
-        .then(response => console.log(response))
-        .catch(err => console.log(error));
-    }
-
-    getDataFilms();
   }
 }
 
