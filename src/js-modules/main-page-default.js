@@ -1,18 +1,22 @@
 import { genres } from './genres';
 
 let processed;
-let film_list = document.querySelector('.film__list');
+export let film_list = document.querySelector('.film__list');
 let markup = '';
 export let page = 1;
 export let insertPage = `&page=${page}`;
-let totalPages;
 const TRENDING_URL = 'https://api.themoviedb.org/3/trending/movie/day?api_key=';
 const API_KEY = 'd7175633e0b5107da3a11b631113cb80';
 const LANGUAGE = '&language=en-US';
+export const homePage = document.querySelector(".home")
+const logo = document.querySelector(".navigation__logo")
+
 
 window.addEventListener('load', fetchTrendingFilms);
+homePage.addEventListener('click', fetchTrendingFilms)
+logo.addEventListener("click", fetchTrendingFilms)
 
-function getGenreByID(array, ids = []) {
+export function getGenreByID(array, ids = []) {
   processed = ids.map(id => array.find(item => item.id === id)?.name);
   if (processed.length > 3) {
     processed.splice(2, processed.length - 2, 'Other');
