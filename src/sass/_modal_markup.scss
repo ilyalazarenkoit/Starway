@@ -69,7 +69,7 @@
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  color: rgb(37, 150, 190);
+  color: #ff6b01;
 }
 // ======================
 .wrapper_about {
@@ -130,11 +130,12 @@
 .modal_btn:active,
 .modal_btn:hover {
   outline: 0;
+  background-color: #ff6b0163;
 }
 
 .modal_btn:hover {
   // background-color: rgb(37, 150, 190, 0.2);
-  border-color: rgb(37, 150, 190, 0.2);
+  border-color: #ff6b01;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
