@@ -1,12 +1,16 @@
+import { renderMarkup, film_list, fetchTrendingFilms, homePage, getGenreByID } from "./main-page-default";
+import { fetchFilmPick, BASE_URl, API_KEY } from "./modal-markup";
+import { genres } from './genres';
+
 const arrWatched = [];
 const arrQueue = [];
+const library = document.querySelector(".library")
+
 
 const handleWatchedBackdrop = document.querySelector('.modal__backdrop');
 const handleButtonClickWatched = document.querySelector('.library-watched');
 const handleButtonClickQueue = document.querySelector('.library-queue');
 
-handleButtonClickWatched.addEventListener('click', openWatchedLibrary);
-handleButtonClickQueue.addEventListener('click', openQueueLibrary);
 
 export function addToLibrary() {
   if (handleWatchedBackdrop) {
@@ -49,11 +53,56 @@ export function addToLibrary() {
 }
 
 function openWatchedLibrary() {
-  const dataW = localStorage.getItem('arrWatched');
-  console.log(dataW);
+    console.log("click on library")
+    film_list.innerHTML = "";
+    const unparsedWatched = localStorage.getItem('arrWatched');
+    const watched = JSON.parse(unparsedWatched)
+    watched.map(async id => {
+      console.log(id)
+      const results = await fetchFilmPick(id);
+      console.log(results)
+      renderLibraryFilms(results)
+    })
 }
 
 function openQueueLibrary() {
-  const dataQ = localStorage.getItem('arrQueue');
-  console.log(dataQ);
+  console.log("click on library")
+    film_list.innerHTML = "";
+    const unparsedQueue = localStorage.getItem('arrQueue');
+    const queue = JSON.parse(unparsedQueue)
+    queue.map(async id => {
+      console.log(id)
+      const results = await fetchFilmPick(id);
+      console.log(results)
+      renderLibraryFilms(results)
+    })
+}
+
+library.addEventListener("click", openWatchedLibrary)
+handleButtonClickWatched.addEventListener('click', openWatchedLibrary);
+handleButtonClickQueue.addEventListener('click', openQueueLibrary);
+
+function renderLibraryFilms(results) {
+  film_list.innerHTML += `<li class="film__card" data-id="${results.id}">
+  <img class="film__img" src="https://image.tmdb.org/t/p/w500/${
+    results.poster_path
+  }" alt=${results.title}>
+  <div class="film__wrapper">
+  <h2 class="film__name">${results.title}</h2>
+  <p class="film__genre">${getGenre(results.genres)} | ${(results.release_date || item.first_air_date || '').slice(
+0,
+4
+)}</p>
+<p class="film__rate">${results.vote_average.toFixed(1)}</p>
+</div>
+</li>`
+}
+
+function getGenre(genres) {
+  processed = genres.map(item => item.name);
+  if (processed.length > 3) {
+    processed.splice(2, processed.length - 2, 'Other');
+  }
+  let str = processed.join(', ');
+  return str;
 }
