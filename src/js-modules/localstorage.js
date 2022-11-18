@@ -1,7 +1,7 @@
 import { renderMarkup, film_list, fetchTrendingFilms, homePage, getGenreByID } from "./main-page-default";
 import { fetchFilmPick, BASE_URl, API_KEY } from "./modal-markup";
 import { genres } from './genres';
-let processed;
+
 const arrWatched = [];
 const arrQueue = [];
 const library = document.querySelector(".library")
@@ -91,8 +91,10 @@ async function renderLibraryFilms(results) {
 </div>
 </li>`
 }
-function getGenre(genres) {
-  processed = genres.map(item => item.name);
+
+
+async function getGenre(genres) {
+ let processed = await genres.map(item => item.name);
   console.log(processed)
   if (processed.length > 3) {
     processed.splice(2, processed.length - 2, 'Other');
