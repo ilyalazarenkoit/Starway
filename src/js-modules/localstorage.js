@@ -53,12 +53,10 @@ export function addToLibrary() {
 }
 
 function openWatchedLibrary() {
-    console.log("click on library")
     film_list.innerHTML = "";
     const unparsedWatched = localStorage.getItem('arrWatched');
     const watched = JSON.parse(unparsedWatched)
     watched.map(async id => {
-      console.log(id)
       const results = await fetchFilmPick(id);
       console.log(results)
       renderLibraryFilms(results)
@@ -66,14 +64,11 @@ function openWatchedLibrary() {
 }
 
 function openQueueLibrary() {
-  console.log("click on library")
     film_list.innerHTML = "";
     const unparsedQueue = localStorage.getItem('arrQueue');
     const queue = JSON.parse(unparsedQueue)
     queue.map(async id => {
-      console.log(id)
       const results = await fetchFilmPick(id);
-      console.log(results)
       renderLibraryFilms(results)
     })
 }
