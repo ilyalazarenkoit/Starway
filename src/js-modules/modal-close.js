@@ -7,7 +7,7 @@ const modalClose = document.querySelector('.modal__close-btn');
 
 const pickFilm = document.querySelector('.film__list');
 pickFilm.addEventListener('click', onModalOpenBtn);
-
+console.log(pickFilm);
 pickFilm.addEventListener('click', async event => {
   const id = event.target.closest('.film__card').dataset.id;
   const response = await fetchFilmPick(id);
