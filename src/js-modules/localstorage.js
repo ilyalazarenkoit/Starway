@@ -1,7 +1,7 @@
 import { renderMarkup, film_list, fetchTrendingFilms, homePage, getGenreByID } from "./main-page-default";
 import { fetchFilmPick, BASE_URl, API_KEY } from "./modal-markup";
 import { genres } from './genres';
-
+let processed;
 const arrWatched = [];
 const arrQueue = [];
 const library = document.querySelector(".library")
