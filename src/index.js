@@ -9,7 +9,7 @@ import './js-modules/login-modal';
 import './js-modules/authentication-login';
 import './js-modules/authentication-sign';
 import './js-modules/is-auth';
+import './js-modules/switch-theme';
 import './js-modules/arrow-up';
 import './js-modules/pagination';
 import './js-modules/api';
-import './js-modules/switch-theme';
