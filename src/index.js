@@ -17,3 +17,4 @@ import './js-modules/login-modal';
 import './js-modules/authentication-login';
 import './js-modules/authentication-sign';
 import './js-modules/is-auth';
+import './js-modules/arrow-up';
