@@ -1,5 +1,7 @@
 import Films__API from './api';
 import Notiflix from 'notiflix';
+import Films__API from './api';
+import Notiflix from 'notiflix';
 import { renderMarkup } from './main-page-default';
 const filmsApi = new Films__API();
 
@@ -22,7 +24,7 @@ export function onInputSearch(event) {
     .getFilmsByQuery()
     .then(({ results }) => {
       if (results.length === 0) {
-        Notiflix.Notify.failure('No such movie');
+        Notiflix.Notify.failure('Sorry, films not found');
         return;
       }
       return renderMarkup(results);
