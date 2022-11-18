@@ -1,7 +1,7 @@
 import './main-page-default';
 
-const BASE_URl = 'https://api.themoviedb.org/3/movie/';
-const API_KEY = 'd7175633e0b5107da3a11b631113cb80';
+export const BASE_URl = 'https://api.themoviedb.org/3/movie/';
+export const API_KEY = 'd7175633e0b5107da3a11b631113cb80';
 
 const insertMarkup = document.querySelector('.modal_movie_card');
 

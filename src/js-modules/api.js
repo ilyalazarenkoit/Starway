@@ -8,6 +8,12 @@ export default class Films__API {
     this.page = 1;
   }
 
+  getPopularMovies() {
+    return axios(
+      `${this.URL}/discover/movie?sort_by=popularity.desc&api_key=${this.KEY}&page=${this.page}&language=en-US&include_adult=false`
+    ).then(({ data }) => data);
+  }
+
   getFilmsByQuery() {
     return axios
       .get(
