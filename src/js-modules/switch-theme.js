@@ -25,7 +25,16 @@ function changeBodyStyles() {
     toggleSwitch.removeAttribute('checked');
   }
 }
-changeBodyStyles();
+
+function checkeLocalStorage() {
+  if (!localStorage.getItem('theme')) {
+    return;
+  }
+
+  changeBodyStyles();
+}
+
+checkeLocalStorage();
 
 function switchTheme(e) {
   if (e.target.checked) {
