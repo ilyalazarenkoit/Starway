@@ -1,5 +1,6 @@
 import './main-page-default';
 import { fetchFilmPick, createMarkupMovieInfo } from './modal-markup';
+import { addToLibrary } from './localstorage';
 
 const overlay = document.querySelector('.modal__backdrop');
 const modalCardMovie = document.querySelector('.modal_movie_card');
@@ -20,6 +21,7 @@ pickFilm.addEventListener('click', async event => {
   const id = event.target.closest('.film__card').dataset.id;
   const response = await fetchFilmPick(id);
   createMarkupMovieInfo(response);
+  addToLibrary();
 });
 
 function onModalCloseBtn() {

@@ -1,44 +1,47 @@
 <header class="header header__home">
-    <div class="container">
-        <nav class="header__navigation navigation">
-            <a href="./index.html" class="navigation__logo">
-                <svg width="24" height="24">
-                    <use href="./images/symbol-defs.svg#filmoteka-icon"></use>
+  <div class="container">
+    <nav class="header__navigation navigation">
+      <a href="./index.html" class="navigation__logo">
+        <svg width="24" height="24">
+          <use href="./images/symbol-defs.svg#filmoteka-icon"></use>
+        </svg>
+        <span>Filmoteka</span>
+      </a>
+      <ul class="navigation__list">
+        <li class="navigation__item">
+          <a href="#" class="navigation__link home active">Home</a>
+        </li>
+        <li class="navigation__item">
+          <a href="#" class="navigation__link library">my library</a>
+        </li>
+        <li class="navigation__sign-in">
+          <a class="sign__in-link">SIGN IN</a>
+        </li>
+        <li class="navigation__sign-out">
+          <a class="sign__out-link">SIGN OUT</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="header__render">
+      <div class="render__home">
+        <form class="header__form search">
+          <form class="header__form search">
+            <input name="search" type="text" placeholder="Movie search" class="search__input">
+            <button type="submit" class="search__submit">
+                <svg width="12" height="12">
+                    <use href="./images/symbol-defs.svg#search-icon"></use>
                 </svg>
-                <span>Filmoteka</span>
-            </a>
-            <ul class="navigation__list">
-                <li class="navigation__item">
-                    <a href="#" class="navigation__link active">Home</a>
-                </li>
-                <li class="navigation__item">
-                    <a href="#" class="navigation__link">my library</a>
-                </li>
-                <li class="navigation__sign-in">
-                    <a class="sign__in-link">SIGN IN</a>
-                </li>
-                <li class="navigation__sign-out">
-                    <a class="sign__out-link">SIGN OUT</a>
-                </li>
-            </ul>
-        </nav>
-        <div class="header__render">
-            <div class="render__home">
-                <form class="header__form search">
-                    <input type="text" placeholder="Movie search" class="search__input">
-                    <button type="submit" class="search__submit">
-                        <svg width="12" height="12">
-                            <use href="./images/symbol-defs.svg#search-icon"></use>
-                        </svg>
-                    </button>
-                </form>
-                <p class="search__error">Search result not successful. Enter the correct movie name and </p>
-            </div>
-            <div class="render__library">
-                <button class="header__button enable">WATCHED</button>
-                <button class="header__button">QUEUE</button>
-            </div>
-        </div>
-
+            </button>
+        </form>
+        <p class="search__error">Search result not successful. Enter the correct movie name and  </p>
+      </div>
+      <div class="render__library">
+        <button class="header__button library-watched enable watched">WATCHED</button>
+        <button class="header__button library-queue ">QUEUE</button>
+      </div>
     </div>
+
+  </div>
+  </div>
+  </div>
 </header>

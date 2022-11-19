@@ -1,0 +1,52 @@
+[data-theme="dark"] {
+    --bg-color: #263238;
+    --text-color: #e0e0e0;
+}
+
+body {
+    transition-duration: 500ms;
+}
+
+.theme {
+    z-index: 1000000;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 30px;
+    left: 30px;
+}
+
+.toggle-button {
+    cursor: pointer;
+    -webkit-appearance: none;
+    outline: none;
+    width: 50px;
+    height: 25px;
+    background-color: #212121;
+    border-radius: 50px;
+    position: relative;
+    transition: .4s;
+}
+
+.toggle-button:before {
+    content: "";
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    border-radius: 50px;
+    top: 0;
+    bottom: 0;
+    background-color: #bdbdbd;
+    transition: .4s;
+}
+
+.toggle-button:checked {
+    background-color: #bdbdbd;
+}
+
+.toggle-button:checked:before {
+    transform: translate(100%);
+    background-color: #212121;
+    transition: .4s;
+}
