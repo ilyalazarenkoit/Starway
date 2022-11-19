@@ -16,8 +16,10 @@ pickFilm.addEventListener('click', async event => {
   addToLibrary();
 });
 
-function onModalOpenBtn() {
+function onModalOpenBtn(event) {
+  console.log(event.target.name)
   overlay.classList.toggle('is-hidden');
+
 }
 
 modalClose.addEventListener('click', onModalCloseBtn);
