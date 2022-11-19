@@ -12,6 +12,7 @@ export function onInputSearch(event) {
   const inputValue = event.currentTarget.elements.search.value
     .trim()
     .toLowerCase();
+  console.log(inputValue)
   if (inputValue === '') {
     Notiflix.Notify.info('Please, type movie name');
     return;
@@ -22,7 +23,7 @@ export function onInputSearch(event) {
     .getFilmsByQuery()
     .then(({ results }) => {
       if (results.length === 0) {
-        Notiflix.Notify.failure('No such movie');
+        Notiflix.Notify.failure('Sorry, films not found');
         return;
       }
       return renderMarkup(results);
