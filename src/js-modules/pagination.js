@@ -4,7 +4,7 @@ import { renderMarkup } from './main-page-default';
 import Films__API from './api';
 
 const filmList = document.querySelector('.film__list');
-const apiFilms = new Films__API();
+export const apiFilms = new Films__API();
 const container = document.getElementById('pagination');
 let formSubmitted = true;
 
@@ -39,10 +39,6 @@ export const pagination = new Pagination(container, options);
 
 // pagination.on('beforeMove', event => {
 //   apiFilms.page = event.page;
-//   if (apiFilms.searchType === 'byName') {
-//     fetchFilms();
-//   } else {
-//   }
 //   apiFilms
 //     .getPopularMovies()
 //     .then(data => {
@@ -60,35 +56,35 @@ export const pagination = new Pagination(container, options);
 //     .catch(console.log);
 // });
 
-// pagination.on('afterMove', function (eventData) {
-//   apiFilms.page = eventData.page;
-//   if (apiFilms.searchType === 'byName') {
-//     fetchFilms();
-//     renderMarkup(data.results);
-//   } else {
-//     apiFilms.getPopularMovies();
-//   }
-//   filmList.scrollIntoView({
-//     behavior: 'smooth',
-//     block: 'start',
-//   });
+// pagination.on('beforeMove', event => {
+//   apiFilms.page = event.page;
+//   console.log('event', event);
+//   const methodApi = apiFilms.query ? 'getFilmsByQuery' : 'getPopularMovies';
+//   apiFilms[methodApi]()
+//     .then(data => {
+//       event._options.totalItems = data.total_pages;
+//       console.log(data.total_pages);
+//       renderMarkup(data.results);
+//       apiFilms.setTotalPages(data.total_pages);
+//       filmList.scrollIntoView({
+//         behavior: 'smooth',
+//         block: 'start',
+//       });
+//     })
+//     .catch(console.log);
 // });
 
 pagination.on('beforeMove', event => {
   apiFilms.page = event.page;
-  apiFilms
-    .getPopularMovies()
+  console.log('event', event);
+  const methodApi = apiFilms.query ? 'getFilmsByQuery' : 'getPopularMovies';
+  apiFilms[methodApi]()
     .then(data => {
-      // console.log(data, renderMarkup)
       renderMarkup(data.results);
       filmList.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
       });
-      //   if (formSubmitted) {
-      //     pagination.reset(apiFilms.results);
-      //   }
-      //   formSubmitted = false;
     })
     .catch(console.log);
 });
