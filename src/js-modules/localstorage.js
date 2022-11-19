@@ -64,7 +64,7 @@ function openWatchedLibrary() {
     })
   }else{
     Notiflix.Notify.failure('Sorry, films not found');
-    film_list.innerHTML = `<li><h2 class="empty-library">There is no films in "Watched"</li>`
+    film_list.innerHTML = `<li><h2 class="empty-library">No movies in "Watched"</li>`
   }
 }
 
@@ -79,7 +79,7 @@ function openQueueLibrary() {
     })
   }else {
     Notiflix.Notify.failure('Sorry, films not found');
-    film_list.innerHTML = `<li><h2 class="empty-library">There is no films in "Queue"</li>`
+    film_list.innerHTML = `<li><h2 class="empty-library">No movies in "Queue"</li>`
 }
 } 
 
