@@ -58,7 +58,7 @@ function openWatchedLibrary() {
     const watched = JSON.parse(unparsedWatched)
     watched.map(async id => {
       const results = await fetchFilmPick(id);
-      renderLibraryFilms(results)
+      film_list.innerHTML += await renderLibraryFilms(results)
     })
 }
 
@@ -68,7 +68,7 @@ function openQueueLibrary() {
     const queue = JSON.parse(unparsedQueue)
     queue.map(async id => {
       const results = await fetchFilmPick(id);
-      renderLibraryFilms(results)
+      film_list.innerHTML += await renderLibraryFilms(results)
     })
 }
 
@@ -77,13 +77,13 @@ handleButtonClickWatched.addEventListener('click', openWatchedLibrary);
 handleButtonClickQueue.addEventListener('click', openQueueLibrary);
 
 async function renderLibraryFilms(results) {
-  film_list.innerHTML +=  `<li class="film__card" data-id="${results.id}">
+  return `<li class="film__card" data-id="${results.id}">
   <img class="film__img" src="https://image.tmdb.org/t/p/w500/${
     results.poster_path
   }" alt=${results.title}>
   <div class="film__wrapper">
   <h2 class="film__name">${results.title}</h2>
-  <p class="film__genre">${getGenre(results.genres)} | ${(results.release_date || item.first_air_date || '').slice(
+  <p class="film__genre">${await getGenre(results.genres)} | ${(results.release_date || item.first_air_date || '').slice(
 0,
 4
 )}</p>
@@ -100,6 +100,5 @@ async function getGenre(genres) {
     processed.splice(2, processed.length - 2, 'Other');
   }
   let str = processed.join(', ');
-  console.log(str);
   return str;
 }
