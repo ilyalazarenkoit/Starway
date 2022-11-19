@@ -17,11 +17,13 @@ const checkLibrary = document.querySelector('.render__library');
 const handleWatchedBackdrop = document.querySelector('.modal__backdrop');
 const handleButtonClickWatched = document.querySelector('.library-watched');
 const handleButtonClickQueue = document.querySelector('.library-queue');
+// const modalClose = document.querySelector('.modal__close-btn');
 
 export function addToLibrary() {
   if (handleWatchedBackdrop) {
     const handleButtonClickAddWatched = document.querySelector('.btn_add');
     const handleButtonClickAddQueue = document.querySelector('.btn_queue');
+    const modalCardMovie = document.querySelector('.modal_movie_card');
 
     handleButtonClickAddWatched.addEventListener('click', event => {
       const id = event.target.dataset.id;
@@ -51,13 +53,13 @@ export function addToLibrary() {
         handleButtonClickAddWatched.classList.remove('change-btn');
         handleButtonClickAddWatched.textContent = 'Add to Watched';
 
-        console.log(checkLibrary.style === 'display: flex');
-
         if (
           library.classList.contains('active') &&
           handleButtonClickWatched.classList.contains('enable')
         ) {
           openWatchedLibrary();
+          modalCardMovie.innerHTML = '';
+          handleWatchedBackdrop.classList.add('is-hidden');
         }
         Notiflix.Notify.success('Film remove from watched library');
         return;
@@ -85,6 +87,8 @@ export function addToLibrary() {
           library.classList.contains('active') &&
           handleButtonClickQueue.classList.contains('enable')
         ) {
+          modalCardMovie.innerHTML = '';
+          handleWatchedBackdrop.classList.add('is-hidden');
           openQueueLibrary();
         }
 
