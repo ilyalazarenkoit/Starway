@@ -11,8 +11,9 @@ import Notiflix from 'notiflix';
 
 const arrWatched = [];
 const arrQueue = [];
-const library = document.querySelector('.library');
 
+const library = document.querySelector('.library');
+const checkLibrary = document.querySelector('.render__library');
 const handleWatchedBackdrop = document.querySelector('.modal__backdrop');
 const handleButtonClickWatched = document.querySelector('.library-watched');
 const handleButtonClickQueue = document.querySelector('.library-queue');
@@ -45,9 +46,19 @@ export function addToLibrary() {
             arrWatched.splice(index, 1);
           }
         });
+
         localStorage.setItem('arrWatched', JSON.stringify(arrWatched));
         handleButtonClickAddWatched.classList.remove('change-btn');
         handleButtonClickAddWatched.textContent = 'Add to Watched';
+
+        console.log(checkLibrary.style === 'display: flex');
+
+        if (
+          library.classList.contains('active') &&
+          handleButtonClickWatched.classList.contains('enable')
+        ) {
+          openWatchedLibrary();
+        }
         Notiflix.Notify.success('Film remove from watched library');
         return;
       }
@@ -69,6 +80,14 @@ export function addToLibrary() {
         localStorage.setItem('arrQueue', JSON.stringify(arrQueue));
         handleButtonClickAddQueue.classList.remove('change-btn');
         handleButtonClickAddQueue.textContent = 'Add to Queue';
+
+        if (
+          library.classList.contains('active') &&
+          handleButtonClickQueue.classList.contains('enable')
+        ) {
+          openQueueLibrary();
+        }
+
         Notiflix.Notify.success('Film remove from Queue ');
         return;
       }
@@ -101,10 +120,15 @@ function openQueueLibrary() {
   });
 }
 
-library.addEventListener('click', openWatchedLibrary);
+library.addEventListener('click', () => {
+  if (handleButtonClickWatched.classList.contains('enable')) {
+    openWatchedLibrary();
+  } else {
+    openQueueLibrary();
+  }
+});
 handleButtonClickWatched.addEventListener('click', openWatchedLibrary);
 handleButtonClickQueue.addEventListener('click', openQueueLibrary);
-
 async function renderLibraryFilms(results) {
   film_list.innerHTML += `<li class="film__card" data-id="${results.id}">
   <img class="film__img" src="https://image.tmdb.org/t/p/w500/${
@@ -124,11 +148,10 @@ async function renderLibraryFilms(results) {
 
 async function getGenre(genres) {
   let processed = await genres.map(item => item.name);
-  console.log(processed);
   if (processed.length > 3) {
     processed.splice(2, processed.length - 2, 'Other');
   }
   let str = processed.join(', ');
-  console.log(str);
+
   return str;
 }

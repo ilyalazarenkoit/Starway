@@ -48,7 +48,7 @@ function getDataWithLocaleStorage(id) {
   let dataW = [];
   let dataQ = [];
   dataW = localStorage.getItem('arrWatched');
-  dataQ = localStorage.getItem('arrWatched');
+  dataQ = localStorage.getItem('arrQueue');
 
   const handleButtonWatch = document.querySelector('.btn_add');
   const handleButtonQueue = document.querySelector('.btn_queue');
