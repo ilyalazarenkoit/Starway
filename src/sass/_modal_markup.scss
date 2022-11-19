@@ -10,7 +10,7 @@
     padding: 30px 12px;
     align-items: flex-start;
   }
-  @media screen and (min-width: 1033px) and (max-width: 1980px) {
+  @media screen and (min-width: 1033px) {
     display: flex;
     padding: 30px 12px;
     align-items: center;
@@ -58,6 +58,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    gap: 10px;
   }
 }
 

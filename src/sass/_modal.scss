@@ -15,6 +15,10 @@
   pointer-events: none;
 }
 
+.modal-block {
+  overflow: hidden;
+}
+
 .modal__container {
   position: absolute;
   left: 50%;
@@ -31,8 +35,12 @@
     flex-direction: column;
     overflow: scroll;
   }
-  @media screen and (min-width: 951px) and (max-width: 1280px) {
+  @media screen and (min-width: 951px) and (max-width: 1033px) {
     width: 92vw;
+    padding: 10px 12px;
+  }
+  @media screen and (min-width: 1034px) {
+    width: 900px;
     padding: 10px 12px;
   }
 }
