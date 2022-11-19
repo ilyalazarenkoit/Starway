@@ -1,5 +1,4 @@
 import Pagination from 'tui-pagination';
-// import 'tui-pagination/dist/tui-pagination.css';
 import { renderMarkup } from './main-page-default';
 import Films__API from './api';
 
@@ -37,58 +36,17 @@ const options = {
 
 export const pagination = new Pagination(container, options);
 
-// pagination.on('beforeMove', event => {
-//   apiFilms.page = event.page;
-//   if (apiFilms.searchType === 'byName') {
-//     fetchFilms();
-//   } else {
-//   }
-//   apiFilms
-//     .getPopularMovies()
-//     .then(data => {
-//       // console.log(data, renderMarkup)
-//       renderMarkup(data.results);
-//       filmList.scrollIntoView({
-//         behavior: 'smooth',
-//         block: 'start',
-//       });
-//       //   if (formSubmitted) {
-//       //     pagination.reset(apiFilms.results);
-//       //   }
-//       //   formSubmitted = false;
-//     })
-//     .catch(console.log);
-// });
-
-// pagination.on('afterMove', function (eventData) {
-//   apiFilms.page = eventData.page;
-//   if (apiFilms.searchType === 'byName') {
-//     fetchFilms();
-//     renderMarkup(data.results);
-//   } else {
-//     apiFilms.getPopularMovies();
-//   }
-//   filmList.scrollIntoView({
-//     behavior: 'smooth',
-//     block: 'start',
-//   });
-// });
 
 pagination.on('beforeMove', event => {
   apiFilms.page = event.page;
   apiFilms
     .getPopularMovies()
     .then(data => {
-      // console.log(data, renderMarkup)
       renderMarkup(data.results);
       filmList.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
       });
-      //   if (formSubmitted) {
-      //     pagination.reset(apiFilms.results);
-      //   }
-      //   formSubmitted = false;
     })
     .catch(console.log);
 });

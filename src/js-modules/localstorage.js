@@ -1,6 +1,7 @@
 import { renderMarkup, film_list, fetchTrendingFilms, homePage, getGenreByID } from "./main-page-default";
 import { fetchFilmPick, BASE_URl, API_KEY } from "./modal-markup";
 import { genres } from './genres';
+import Notiflix from "notiflix";
 
 const arrWatched = [];
 const arrQueue = [];
@@ -56,21 +57,31 @@ function openWatchedLibrary() {
     film_list.innerHTML = "";
     const unparsedWatched = localStorage.getItem('arrWatched');
     const watched = JSON.parse(unparsedWatched)
+    if(watched) {
     watched.map(async id => {
       const results = await fetchFilmPick(id);
       film_list.innerHTML += await renderLibraryFilms(results)
     })
+  }else{
+    Notiflix.Notify.failure('Sorry, films not found');
+    film_list.innerHTML = `<li><h2 class="empty-library">There is no films in "Watched"</li>`
+  }
 }
 
 function openQueueLibrary() {
     film_list.innerHTML = "";
     const unparsedQueue = localStorage.getItem('arrQueue');
     const queue = JSON.parse(unparsedQueue)
+    if(queue) {
     queue.map(async id => {
       const results = await fetchFilmPick(id);
       film_list.innerHTML += await renderLibraryFilms(results)
     })
+  }else {
+    Notiflix.Notify.failure('Sorry, films not found');
+    film_list.innerHTML = `<li><h2 class="empty-library">There is no films in "Queue"</li>`
 }
+} 
 
 library.addEventListener("click", openWatchedLibrary)
 handleButtonClickWatched.addEventListener('click', openWatchedLibrary);
@@ -95,7 +106,6 @@ async function renderLibraryFilms(results) {
 
 async function getGenre(genres) {
  let processed = await genres.map(item => item.name);
-  console.log(processed)
   if (processed.length > 3) {
     processed.splice(2, processed.length - 2, 'Other');
   }
