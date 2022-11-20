@@ -10,6 +10,8 @@ const handleOpenTrailer = event => {
   if (event.target.classList.contains('btn_trailer')) {
     const filmTitle = document.querySelector('.modal_info__title').textContent;
 
+    document.body.style.overflowY = 'hidden';
+
     trailerModalElement.style.cssText = `
         opacity: 1;
         visibility: visible;
@@ -54,6 +56,7 @@ const renderYouTubeTrailer = id => {
 };
 
 const handleCloseTrailerModal = () => {
+  document.body.style.overflowY = 'visible';
   document.querySelector('.trailer__video').innerHTML = '';
 
   trailerModalElement.style.cssText = `
