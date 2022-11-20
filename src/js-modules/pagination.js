@@ -2,16 +2,17 @@ import Pagination from 'tui-pagination';
 import { renderMarkup } from './main-page-default';
 import Films__API from './api';
 
-const filmList = document.querySelector('.film__list');
 export const apiFilms = new Films__API();
 export const container = document.getElementById('pagination');
+const filmList = document.querySelector('.film__list');
+
 let formSubmitted = true;
 export let divPagination = document.querySelector(".tui-pagination")
 const home = document.querySelector(".home")
 
 
 const options = {
-  totalItems: 20000,
+  totalItems: 1000,
   itemsPerPage: 20,
   visiblePages: 5,
   page: 1,
@@ -37,7 +38,24 @@ const options = {
   },
 };
 
-export const pagination = new Pagination(container, options);
+// const pagination = new Pagination(container, options);
+
+// pagination.on('beforeMove', event => {
+//   apiFilms.page = event.page;
+//   console.log('event', event);
+//   const methodApi = apiFilms.query ? 'getFilmsByQuery' : 'getPopularMovies';
+//   apiFilms[methodApi]()
+//     .then(data => {
+//       renderMarkup(data.results);
+//       filmList.scrollIntoView({
+//         behavior: 'smooth',
+//         block: 'start',
+//       });
+//     })
+//     .catch(console.log);
+// });
+
+const pagination = new Pagination(container, options);
 
 function enablePagination() {
 if(home.classList.contains('active')) {
@@ -50,7 +68,11 @@ pagination.on('beforeMove', event => {
   const methodApi = apiFilms.query ? 'getFilmsByQuery' : 'getPopularMovies';
   apiFilms[methodApi]()
     .then(data => {
+      console.log(data.total_results);
+      options.totalItems = data.total_results;
+      console.log(options.totalItems);
       renderMarkup(data.results);
+      //   apiFilms.setTotalPages(data.total_pages);
       filmList.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
