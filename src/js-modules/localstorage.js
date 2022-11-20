@@ -108,20 +108,30 @@ function openWatchedLibrary() {
   film_list.innerHTML = '';
   const unparsedWatched = localStorage.getItem('arrWatched');
   const watched = JSON.parse(unparsedWatched);
-  watched.map(async id => {
-    const results = await fetchFilmPick(id);
-    renderLibraryFilms(results);
-  });
+  if (watched) {
+    watched.map(async id => {
+      const results = await fetchFilmPick(id);
+      film_list.innerHTML += await renderLibraryFilms(results);
+    });
+  } else {
+    Notiflix.Notify.failure('Sorry, films not found');
+    film_list.innerHTML = `<li><h2 class="empty-library">No movies in "Watched"</li>`;
+  }
 }
 
 function openQueueLibrary() {
   film_list.innerHTML = '';
   const unparsedQueue = localStorage.getItem('arrQueue');
   const queue = JSON.parse(unparsedQueue);
-  queue.map(async id => {
-    const results = await fetchFilmPick(id);
-    renderLibraryFilms(results);
-  });
+  if (queue) {
+    queue.map(async id => {
+      const results = await fetchFilmPick(id);
+      film_list.innerHTML += await renderLibraryFilms(results);
+    });
+  } else {
+    Notiflix.Notify.failure('Sorry, films not found');
+    film_list.innerHTML = `<li><h2 class="empty-library">No movies in "Queue"</li>`;
+  }
 }
 
 library.addEventListener('click', () => {
@@ -134,13 +144,13 @@ library.addEventListener('click', () => {
 handleButtonClickWatched.addEventListener('click', openWatchedLibrary);
 handleButtonClickQueue.addEventListener('click', openQueueLibrary);
 async function renderLibraryFilms(results) {
-  film_list.innerHTML += `<li class="film__card" data-id="${results.id}">
+  return `<li class="film__card" data-id="${results.id}">
   <img class="film__img" src="https://image.tmdb.org/t/p/w500/${
     results.poster_path
   }" alt=${results.title}>
   <div class="film__wrapper">
   <h2 class="film__name">${results.title}</h2>
-  <p class="film__genre">${getGenre(results.genres)} | ${(
+  <p class="film__genre">${await getGenre(results.genres)} | ${(
     results.release_date ||
     item.first_air_date ||
     ''
@@ -156,6 +166,5 @@ async function getGenre(genres) {
     processed.splice(2, processed.length - 2, 'Other');
   }
   let str = processed.join(', ');
-
   return str;
 }

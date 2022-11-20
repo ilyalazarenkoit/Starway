@@ -1,5 +1,4 @@
 import Pagination from 'tui-pagination';
-// import 'tui-pagination/dist/tui-pagination.css';
 import { renderMarkup } from './main-page-default';
 import Films__API from './api';
 
@@ -36,43 +35,6 @@ const options = {
 };
 
 export const pagination = new Pagination(container, options);
-
-// pagination.on('beforeMove', event => {
-//   apiFilms.page = event.page;
-//   apiFilms
-//     .getPopularMovies()
-//     .then(data => {
-//       // console.log(data, renderMarkup)
-//       renderMarkup(data.results);
-//       filmList.scrollIntoView({
-//         behavior: 'smooth',
-//         block: 'start',
-//       });
-//       //   if (formSubmitted) {
-//       //     pagination.reset(apiFilms.results);
-//       //   }
-//       //   formSubmitted = false;
-//     })
-//     .catch(console.log);
-// });
-
-// pagination.on('beforeMove', event => {
-//   apiFilms.page = event.page;
-//   console.log('event', event);
-//   const methodApi = apiFilms.query ? 'getFilmsByQuery' : 'getPopularMovies';
-//   apiFilms[methodApi]()
-//     .then(data => {
-//       event._options.totalItems = data.total_pages;
-//       console.log(data.total_pages);
-//       renderMarkup(data.results);
-//       apiFilms.setTotalPages(data.total_pages);
-//       filmList.scrollIntoView({
-//         behavior: 'smooth',
-//         block: 'start',
-//       });
-//     })
-//     .catch(console.log);
-// });
 
 pagination.on('beforeMove', event => {
   apiFilms.page = event.page;

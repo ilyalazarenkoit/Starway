@@ -28,7 +28,7 @@ export function getGenreByID(array, ids = []) {
 export function renderMarkup(results) {
   markup = results
     .map(item => {
-      return `<li class="film__card" data-id="${item.id}">
+      return `<li class="film__card" data-id="${item.id}" name="card">
               <img class="film__img" src="https://image.tmdb.org/t/p/w500/${
                 item.poster_path
               }" alt=${item.title}>
