@@ -17,11 +17,16 @@ homePage.addEventListener('click', fetchTrendingFilms)
 logo.addEventListener("click", fetchTrendingFilms)
 
 export function getGenreByID(array, ids = []) {
-  processed = ids.map(id => array.find(item => item.id === id)?.name);
+  processed = ids.map(id => {
+    return array.find(item => item.id === id)?.name});
   if (processed.length > 3) {
     processed.splice(2, processed.length - 2, 'Other');
   }
+  console.log(processed)
+  if(processed) {
   let str = processed.join(', ');
+  return str
+  }
   return str;
 }
 
@@ -31,9 +36,9 @@ export function renderMarkup(results) {
       return `<li class="film__card" data-id="${item.id}" name="card">
               <img class="film__img" src="https://image.tmdb.org/t/p/w500/${
                 item.poster_path
-              }" alt=${item.title}>
+              }" alt=${(item.title || item.name)}>
               <div class="film__wrapper">
-              <h2 class="film__name">${item.title}</h2>
+              <h2 class="film__name">${(item.title || item.name)}</h2>
               <p class="film__genre">${getGenreByID(
                 genres,
                 item.genre_ids

@@ -20,6 +20,7 @@ export default class Films__API {
         `${this.URL}/search/multi?api_key=${this.KEY}&query=${this.query}&page=${this.page}`
       )
       .then(response => {
+        console.log(response.data)
         return response.data;
       });
     }
@@ -30,8 +31,8 @@ export default class Films__API {
       .then(response => response.genres);
   }
 
+
   setQuery(query) {
     this.query = query;
   }
-
 }
