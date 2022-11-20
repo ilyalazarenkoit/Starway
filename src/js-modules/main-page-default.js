@@ -33,10 +33,10 @@ export function getGenreByID(array, ids = []) {
 export function renderMarkup(results) {
   markup = results
     .map(item => {
-      if(item.vote_average) {
+      if(item.vote_average && item.poster_path) {
       return `<li class="film__card" data-id="${item.id}" name="card">
               <img class="film__img" src="https://image.tmdb.org/t/p/w500/${
-                item.poster_path
+                (item.poster_path)
               }" alt=${(item.title || item.name)}>
               <div class="film__wrapper">
               <h2 class="film__name">${(item.title || item.name)}</h2>
@@ -50,8 +50,22 @@ export function renderMarkup(results) {
         <p class="film__rate">${(item.vote_average.toFixed(1))}</p>
         </div>
         </li>`;
-    }else if(item.vote_average === undefined){ 
-      return
+    }else if(item.vote_average === undefined && item.poster_path !== undefined){ 
+      return `<li class="film__card" data-id="${item.id}" name="card">
+      <img class="film__img" src="https://image.tmdb.org/t/p/w500/${
+        (item.poster_path)
+      }" alt=${(item.title || item.name)}>
+      <div class="film__wrapper">
+      <h2 class="film__name">${(item.title || item.name)}</h2>
+      <p class="film__genre">${getGenreByID(
+        genres,
+        item.genre_ids
+      )} | ${(item.release_date || item.first_air_date || '').slice(
+0,
+4
+)}</p>
+</div>
+</li>`;
   }
 })
     .join('');
