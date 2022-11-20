@@ -108,7 +108,7 @@ function openWatchedLibrary() {
   film_list.innerHTML = '';
   const unparsedWatched = localStorage.getItem('arrWatched');
   const watched = JSON.parse(unparsedWatched);
-  if (watched) {
+  if (watched.length > 0) {
     watched.map(async id => {
       const results = await fetchFilmPick(id);
       film_list.innerHTML += await renderLibraryFilms(results);
@@ -123,7 +123,7 @@ function openQueueLibrary() {
   film_list.innerHTML = '';
   const unparsedQueue = localStorage.getItem('arrQueue');
   const queue = JSON.parse(unparsedQueue);
-  if (queue) {
+  if (queue.length > 0) {
     queue.map(async id => {
       const results = await fetchFilmPick(id);
       film_list.innerHTML += await renderLibraryFilms(results);
@@ -168,3 +168,4 @@ async function getGenre(genres) {
   let str = processed.join(', ');
   return str;
 }
+
