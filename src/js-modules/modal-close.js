@@ -7,20 +7,28 @@ const modalCardMovie = document.querySelector('.modal_movie_card');
 const modalClose = document.querySelector('.modal__close-btn');
 const pickFilm = document.querySelector('.film__list');
 
-pickFilm.addEventListener('click', onModalOpenBtn);
+pickFilm.addEventListener('click', (event) => {
+  if (event.target.nodeName !== 'UL'){
+  onModalOpenBtn()
+}else{
+  return
+}
+return
+});
 pickFilm.addEventListener('click', async event => {
+  if (event.target.nodeName !== 'UL') {
   const id = event.target.closest('.film__card').dataset.id;
   const response = await fetchFilmPick(id);
   createMarkupMovieInfo(response);
   addToLibrary();
   getDataWithLocaleStorage(id);
+}
 });
 
-function onModalOpenBtn(event) {
-  if (event.target.nodeName !== 'UL') {
+function onModalOpenBtn() {
     overlay.classList.toggle('is-hidden');
   }
-}
+
 
 modalClose.addEventListener('click', onModalCloseBtn);
 overlay.addEventListener('click', onBackdropClick);
