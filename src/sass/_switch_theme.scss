@@ -23,7 +23,7 @@ body {
     outline: none;
     width: 50px;
     height: 25px;
-    background-color: #212121;
+    background-color: #f5f5f5;
     border-radius: 50px;
     position: relative;
     transition: .4s;
@@ -34,7 +34,7 @@ body {
     position: absolute;
     height: 25px;
     width: 25px;
-    background-image: url(../images/switch-theme/moon-icon.png);
+    background-image: url(../images/switch-theme/sunny-icon.png);
     background-repeat: no-repeat;
     background-size: 100%;
     top: 0;
@@ -44,12 +44,12 @@ body {
 }
 
 .toggle-button:checked {
-    background-color: #ffffff;
+    background-color: #212121;
 }
 
 .toggle-button:checked:before {
     background-color: none;
-    background-image: url(../images/switch-theme/sunny-icon.png);
+    background-image: url(../images/switch-theme/moon-icon.png);
     background-repeat: no-repeat;
     background-size: 100%;
     transform: translate(100%);
