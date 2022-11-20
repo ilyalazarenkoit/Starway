@@ -1,6 +1,7 @@
 import { renderMarkup, film_list, fetchTrendingFilms, homePage, getGenreByID } from "./main-page-default";
 import { fetchFilmPick, BASE_URl, API_KEY } from "./modal-markup";
 import { genres } from './genres';
+import Notiflix from "notiflix";
 
 const arrWatched = [];
 const arrQueue = [];
@@ -56,34 +57,44 @@ function openWatchedLibrary() {
     film_list.innerHTML = "";
     const unparsedWatched = localStorage.getItem('arrWatched');
     const watched = JSON.parse(unparsedWatched)
+    if(watched) {
     watched.map(async id => {
       const results = await fetchFilmPick(id);
-      renderLibraryFilms(results)
+      film_list.innerHTML += await renderLibraryFilms(results)
     })
+  }else{
+    Notiflix.Notify.failure('Sorry, films not found');
+    film_list.innerHTML = `<li><h2 class="empty-library">No movies in "Watched"</li>`
+  }
 }
 
 function openQueueLibrary() {
     film_list.innerHTML = "";
     const unparsedQueue = localStorage.getItem('arrQueue');
     const queue = JSON.parse(unparsedQueue)
+    if(queue) {
     queue.map(async id => {
       const results = await fetchFilmPick(id);
-      renderLibraryFilms(results)
+      film_list.innerHTML += await renderLibraryFilms(results)
     })
+  }else {
+    Notiflix.Notify.failure('Sorry, films not found');
+    film_list.innerHTML = `<li><h2 class="empty-library">No movies in "Queue"</li>`
 }
+} 
 
 library.addEventListener("click", openWatchedLibrary)
 handleButtonClickWatched.addEventListener('click', openWatchedLibrary);
 handleButtonClickQueue.addEventListener('click', openQueueLibrary);
 
 async function renderLibraryFilms(results) {
-  film_list.innerHTML +=  `<li class="film__card" data-id="${results.id}">
+  return `<li class="film__card" data-id="${results.id}">
   <img class="film__img" src="https://image.tmdb.org/t/p/w500/${
     results.poster_path
   }" alt=${results.title}>
   <div class="film__wrapper">
   <h2 class="film__name">${results.title}</h2>
-  <p class="film__genre">${getGenre(results.genres)} | ${(results.release_date || item.first_air_date || '').slice(
+  <p class="film__genre">${await getGenre(results.genres)} | ${(results.release_date || item.first_air_date || '').slice(
 0,
 4
 )}</p>
@@ -95,11 +106,9 @@ async function renderLibraryFilms(results) {
 
 async function getGenre(genres) {
  let processed = await genres.map(item => item.name);
-  console.log(processed)
   if (processed.length > 3) {
     processed.splice(2, processed.length - 2, 'Other');
   }
   let str = processed.join(', ');
-  console.log(str);
   return str;
 }
