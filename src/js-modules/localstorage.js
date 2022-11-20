@@ -8,6 +8,10 @@ import {
 import { fetchFilmPick, BASE_URl, API_KEY } from './modal-markup';
 import { genres } from './genres';
 import Notiflix from 'notiflix';
+import { divPagination, container } from './pagination';
+import Pagination from 'tui-pagination';
+
+
 
 const arrWatched = [];
 const arrQueue = [];
@@ -17,7 +21,7 @@ const checkLibrary = document.querySelector('.render__library');
 const handleWatchedBackdrop = document.querySelector('.modal__backdrop');
 const handleButtonClickWatched = document.querySelector('.library-watched');
 const handleButtonClickQueue = document.querySelector('.library-queue');
-// const modalClose = document.querySelector('.modal__close-btn');
+
 
 export function addToLibrary() {
   if (handleWatchedBackdrop) {
@@ -114,6 +118,7 @@ function openWatchedLibrary() {
       film_list.innerHTML += await renderLibraryFilms(results);
     });
   } else {
+    divPagination.classList.add("is-hidden")
     Notiflix.Notify.failure('Sorry, films not found');
     film_list.innerHTML = `<li><h2 class="empty-library">No movies in "Watched"</li>`;
   }
@@ -129,6 +134,7 @@ function openQueueLibrary() {
       film_list.innerHTML += await renderLibraryFilms(results);
     });
   } else {
+    divPagination.classList.add("is-hidden")
     Notiflix.Notify.failure('Sorry, films not found');
     film_list.innerHTML = `<li><h2 class="empty-library">No movies in "Queue"</li>`;
   }
@@ -141,6 +147,7 @@ library.addEventListener('click', () => {
     openQueueLibrary();
   }
 });
+
 handleButtonClickWatched.addEventListener('click', openWatchedLibrary);
 handleButtonClickQueue.addEventListener('click', openQueueLibrary);
 async function renderLibraryFilms(results) {

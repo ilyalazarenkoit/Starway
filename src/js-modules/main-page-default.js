@@ -22,9 +22,8 @@ export function getGenreByID(array, ids = []) {
   if (processed.length > 3) {
     processed.splice(2, processed.length - 2, 'Other');
   }
-  console.log(processed)
   if(processed) {
-  let str = processed.join(', ');
+  let str = processed.join(' ');
   return str
   }
   return str;
@@ -33,6 +32,7 @@ export function getGenreByID(array, ids = []) {
 export function renderMarkup(results) {
   markup = results
     .map(item => {
+      if(item.vote_average) {
       return `<li class="film__card" data-id="${item.id}" name="card">
               <img class="film__img" src="https://image.tmdb.org/t/p/w500/${
                 item.poster_path
@@ -46,10 +46,13 @@ export function renderMarkup(results) {
         0,
         4
       )}</p>
-        <p class="film__rate">${item.vote_average.toFixed(1)}</p>
+        <p class="film__rate">${(item.vote_average.toFixed(1))}</p>
         </div>
         </li>`;
-    })
+    }else if(item.vote_average === undefined){ 
+      return
+  }
+})
     .join('');
   film_list.innerHTML = markup;
 }
@@ -61,6 +64,7 @@ export function fetchTrendingFilms() {
     })
     .then(response => {
       response.results.sort((a, b) => b.vote_average - a.vote_average);
+      console.log(response)
       renderMarkup(response.results);
     });
 }
