@@ -10,7 +10,7 @@
     padding: 30px 12px;
     align-items: flex-start;
   }
-  @media screen and (min-width: 1033px) and (max-width: 1980px) {
+  @media screen and (min-width: 1033px) {
     display: flex;
     padding: 30px 12px;
     align-items: center;
@@ -58,6 +58,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    gap: 10px;
   }
 }
 
@@ -134,8 +135,13 @@
 }
 
 .modal_btn:hover {
-  // background-color: rgb(37, 150, 190, 0.2);
+  background-color: rgba(255, 108, 23, 0.877);
   border-color: #ff6b01;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.change-btn {
+  background-color: #59cd704f;
+  border-color: #59cd704f;
 }
