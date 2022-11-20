@@ -3,7 +3,7 @@ import { renderMarkup } from './main-page-default';
 import Films__API from './api';
 
 const filmList = document.querySelector('.film__list');
-const apiFilms = new Films__API();
+export const apiFilms = new Films__API();
 const container = document.getElementById('pagination');
 let formSubmitted = true;
 
@@ -36,11 +36,11 @@ const options = {
 
 export const pagination = new Pagination(container, options);
 
-
 pagination.on('beforeMove', event => {
   apiFilms.page = event.page;
-  apiFilms
-    .getPopularMovies()
+  console.log('event', event);
+  const methodApi = apiFilms.query ? 'getFilmsByQuery' : 'getPopularMovies';
+  apiFilms[methodApi]()
     .then(data => {
       renderMarkup(data.results);
       filmList.scrollIntoView({
