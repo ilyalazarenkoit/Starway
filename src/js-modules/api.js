@@ -22,6 +22,7 @@ export default class Films__API {
       .then(response => {
         return response.data;
       });
+    }
 
   getGenre() {
     return axios
@@ -32,4 +33,5 @@ export default class Films__API {
   setQuery(query) {
     this.query = query;
   }
+
 }
