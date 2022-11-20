@@ -54,6 +54,8 @@ const renderYouTubeTrailer = id => {
 };
 
 const handleCloseTrailerModal = () => {
+  document.querySelector('.trailer__video').innerHTML = '';
+
   trailerModalElement.style.cssText = `
     opacity: 0;
     visibility: hidden;
