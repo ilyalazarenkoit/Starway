@@ -1,9 +1,8 @@
-
 import Films__API from './api';
 import Notiflix from 'notiflix';
 import { renderMarkup } from './main-page-default';
 import { apiFilms } from './pagination';
-const apiFilms = new Films__API();
+
 
 const searchEl = document.querySelector('.header__form');
 
@@ -18,6 +17,7 @@ export function onInputSearch(event) {
     Notiflix.Notify.info('Please, type movie name');
     return;
   }
+
   apiFilms.setQuery(inputValue);
   apiFilms
     .getFilmsByQuery()
@@ -29,7 +29,7 @@ export function onInputSearch(event) {
       return renderMarkup(results);
     })
     .catch(error => {
-
+      console.log(error);
     });
   event.currentTarget.reset();
 }
