@@ -20,8 +20,9 @@ export default class Films__API {
         `${this.URL}/search/multi?api_key=${this.KEY}&query=${this.query}&page=${this.page}`
       )
       .then(response => {
-        console.log(response.data)
-        return response.data});
+        console.log(response.data);
+        return response.data;
+      });
   }
 
   getGenre() {
