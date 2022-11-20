@@ -1,4 +1,6 @@
 import { genres } from './genres';
+import { showGallery } from './search_film';
+// import { startPagination } from './pagination';
 
 let processed;
 export let film_list = document.querySelector('.film__list');
@@ -8,13 +10,12 @@ export let insertPage = `&page=${page}`;
 const TRENDING_URL = 'https://api.themoviedb.org/3/trending/movie/day?api_key=';
 const API_KEY = 'd7175633e0b5107da3a11b631113cb80';
 const LANGUAGE = '&language=en-US';
-export const homePage = document.querySelector(".home")
-const logo = document.querySelector(".navigation__logo")
-
+export const homePage = document.querySelector('.home');
+const logo = document.querySelector('.navigation__logo');
 
 window.addEventListener('load', fetchTrendingFilms);
-homePage.addEventListener('click', fetchTrendingFilms)
-logo.addEventListener("click", fetchTrendingFilms)
+homePage.addEventListener('click', fetchTrendingFilms);
+logo.addEventListener('click', fetchTrendingFilms);
 
 export function getGenreByID(array, ids = []) {
   processed = ids.map(id => {
@@ -46,7 +47,7 @@ export function renderMarkup(results) {
         0,
         4
       )}</p>
-        <p class="film__rate">${item.vote_average.toFixed(1)}</p>
+        <p class="film__rate">${item.vote_average || ''}</p>
         </div>
         </li>`;
     })
