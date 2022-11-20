@@ -19,14 +19,18 @@ export default class Films__API {
       .get(
         `${this.URL}/search/multi?api_key=${this.KEY}&query=${this.query}&page=${this.page}`
       )
-      .then(response => response.data);
-  }
+      .then(response => {
+        console.log(response.data)
+        return response.data;
+      });
+    }
 
   getGenre() {
     return axios
       .get(`${this.URL}/genre/movie/list?api_key=${this.KEY}`)
       .then(response => response.genres);
   }
+
 
   setQuery(query) {
     this.query = query;

@@ -1,5 +1,4 @@
 import Pagination from 'tui-pagination';
-// import 'tui-pagination/dist/tui-pagination.css';
 import { renderMarkup } from './main-page-default';
 import Films__API from './api';
 
