@@ -25,8 +25,14 @@ body {
     height: 25px;
     background-color: #f5f5f5;
     border-radius: 50px;
-    position: relative;
+    position: fixed;
+    bottom: 51px;
+    left: 2px;
     transition: .4s;
+    @media screen and (min-width: 768px) {
+        bottom: 40px;
+        left: 25px;
+    }
 }
 
 .toggle-button:before {
