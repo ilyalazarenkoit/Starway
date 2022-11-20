@@ -3,13 +3,14 @@ import Pagination from 'tui-pagination';
 import { renderMarkup } from './main-page-default';
 import Films__API from './api';
 
-const filmList = document.querySelector('.film__list');
 export const apiFilms = new Films__API();
+
+const filmList = document.querySelector('.film__list');
 const container = document.getElementById('pagination');
 let formSubmitted = true;
 
 const options = {
-  totalItems: 20000,
+  totalItems: 1000,
   itemsPerPage: 20,
   visiblePages: 5,
   page: 1,
@@ -35,26 +36,7 @@ const options = {
   },
 };
 
-export const pagination = new Pagination(container, options);
-
-// pagination.on('beforeMove', event => {
-//   apiFilms.page = event.page;
-//   apiFilms
-//     .getPopularMovies()
-//     .then(data => {
-//       // console.log(data, renderMarkup)
-//       renderMarkup(data.results);
-//       filmList.scrollIntoView({
-//         behavior: 'smooth',
-//         block: 'start',
-//       });
-//       //   if (formSubmitted) {
-//       //     pagination.reset(apiFilms.results);
-//       //   }
-//       //   formSubmitted = false;
-//     })
-//     .catch(console.log);
-// });
+// const pagination = new Pagination(container, options);
 
 // pagination.on('beforeMove', event => {
 //   apiFilms.page = event.page;
@@ -62,10 +44,7 @@ export const pagination = new Pagination(container, options);
 //   const methodApi = apiFilms.query ? 'getFilmsByQuery' : 'getPopularMovies';
 //   apiFilms[methodApi]()
 //     .then(data => {
-//       event._options.totalItems = data.total_pages;
-//       console.log(data.total_pages);
 //       renderMarkup(data.results);
-//       apiFilms.setTotalPages(data.total_pages);
 //       filmList.scrollIntoView({
 //         behavior: 'smooth',
 //         block: 'start',
@@ -74,13 +53,19 @@ export const pagination = new Pagination(container, options);
 //     .catch(console.log);
 // });
 
+const pagination = new Pagination(container, options);
+
 pagination.on('beforeMove', event => {
   apiFilms.page = event.page;
   console.log('event', event);
   const methodApi = apiFilms.query ? 'getFilmsByQuery' : 'getPopularMovies';
   apiFilms[methodApi]()
     .then(data => {
+      console.log(data.total_results);
+      options.totalItems = data.total_results;
+      console.log(options.totalItems);
       renderMarkup(data.results);
+      //   apiFilms.setTotalPages(data.total_pages);
       filmList.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
