@@ -22,7 +22,6 @@ export default class Films__API {
       .then(response => {
         return response.data;
       });
-  }
 
   getGenre() {
     return axios
