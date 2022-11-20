@@ -3,10 +3,13 @@ import { renderMarkup } from './main-page-default';
 import Films__API from './api';
 
 export const apiFilms = new Films__API();
-
+export const container = document.getElementById('pagination');
 const filmList = document.querySelector('.film__list');
-const container = document.getElementById('pagination');
+
 let formSubmitted = true;
+export let divPagination = document.querySelector(".tui-pagination")
+const home = document.querySelector(".home")
+
 
 const options = {
   totalItems: 1000,
@@ -54,6 +57,11 @@ const options = {
 
 const pagination = new Pagination(container, options);
 
+function enablePagination() {
+if(home.classList.contains('active')) {
+if(divPagination.classList.contains("is-hidden")){
+  divPagination.classList.remove("is-hidden")
+}
 pagination.on('beforeMove', event => {
   apiFilms.page = event.page;
   console.log('event', event);
@@ -72,3 +80,8 @@ pagination.on('beforeMove', event => {
     })
     .catch(console.log);
 });
+}
+}
+enablePagination()
+
+home.addEventListener("click", enablePagination)
