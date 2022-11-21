@@ -63,7 +63,7 @@ export function addToLibrary() {
         ) {
           openWatchedLibrary();
           modalCardMovie.innerHTML = '';
-          handleWatchedBackdrop.classList.add('is-hidden');
+          handleWatchedBackdrop.classList.toggle('is-hidden');
         }
         Notiflix.Notify.success('Film remove from watched library');
         return;
