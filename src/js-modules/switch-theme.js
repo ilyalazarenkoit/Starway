@@ -1,23 +1,29 @@
-const toggleSwitch = document.querySelector('.toggle-button');
+import { darkThemeSettings } from './theme-settings';
+import { ligthThemeSettings } from './theme-settings';
 
-const darkThemeSettings = {
-  backgroundColor: 'black',
-  color: 'var(--secondary-color-of-text)',
-  checked: 'true',
-};
-const ligthThemeSettings = {
-  backgroundColor: 'white',
-  color: 'var(--primary-color-of-text)',
-  checked: 'false',
-};
+const toggleSwitch = document.querySelector('.toggle-button');
+const footerElement = document.querySelector('.footer');
+const footerTextElement = document.querySelectorAll('.footer-text');
+
+function getLsValue() {
+  return JSON.parse(localStorage.getItem('theme'));
+}
 
 function changeBodyStyles() {
   document.body.style.cssText = `
-        background-color: ${
-          JSON.parse(localStorage.getItem('theme')).backgroundColor
-        };
-        color: ${JSON.parse(localStorage.getItem('theme')).color};
+        background-color: ${getLsValue().backgroundColor};
+        color: ${getLsValue().color};
     `;
+
+  footerElement.style.cssText = `
+        background-color: ${getLsValue().footerBackgroundColor}
+  `;
+
+  footerTextElement.forEach(elem => {
+    elem.style.cssText = `
+        color: ${getLsValue().footerTextColor}
+    `;
+  });
 
   if (JSON.parse(localStorage.getItem('theme')).checked === 'true') {
     toggleSwitch.setAttribute('checked', true);
