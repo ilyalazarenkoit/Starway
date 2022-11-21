@@ -9,6 +9,7 @@ const filmList = document.querySelector('.film__list');
 let formSubmitted = true;
 export let divPagination = document.querySelector(".tui-pagination")
 const home = document.querySelector(".home")
+const logo = document.querySelector('.navigation__logo');
 
 
 const options = {
@@ -85,3 +86,4 @@ pagination.on('beforeMove', event => {
 enablePagination()
 
 home.addEventListener("click", enablePagination)
+logo.addEventListener("click", enablePagination)

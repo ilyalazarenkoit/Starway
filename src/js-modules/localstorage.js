@@ -110,6 +110,7 @@ export function addToLibrary() {
 
 function openWatchedLibrary() {
   film_list.innerHTML = '';
+  divPagination.classList.add("is-hidden")
   const unparsedWatched = localStorage.getItem('arrWatched');
   const watched = JSON.parse(unparsedWatched);
   if (watched.length > 0) {
@@ -118,7 +119,6 @@ function openWatchedLibrary() {
       film_list.innerHTML += await renderLibraryFilms(results);
     });
   } else {
-    divPagination.classList.add("is-hidden")
     Notiflix.Notify.failure('Sorry, films not found');
     film_list.innerHTML = `<li><h2 class="empty-library">No movies in "Watched"</li>`;
   }
@@ -126,6 +126,7 @@ function openWatchedLibrary() {
 
 function openQueueLibrary() {
   film_list.innerHTML = '';
+  divPagination.classList.add("is-hidden")
   const unparsedQueue = localStorage.getItem('arrQueue');
   const queue = JSON.parse(unparsedQueue);
   if (queue.length > 0) {
@@ -134,7 +135,6 @@ function openQueueLibrary() {
       film_list.innerHTML += await renderLibraryFilms(results);
     });
   } else {
-    divPagination.classList.add("is-hidden")
     Notiflix.Notify.failure('Sorry, films not found');
     film_list.innerHTML = `<li><h2 class="empty-library">No movies in "Queue"</li>`;
   }
