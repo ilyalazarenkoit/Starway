@@ -59,7 +59,6 @@ const options = {
 const pagination = new Pagination(container, options);
 
 function enablePagination() {
-if(home.classList.contains('active')) {
 if(divPagination.classList.contains("is-hidden")){
   divPagination.classList.remove("is-hidden")
 }
@@ -82,7 +81,7 @@ pagination.on('beforeMove', event => {
     .catch(console.log);
 });
 }
-}
+
 enablePagination()
 
 home.addEventListener("click", enablePagination)
