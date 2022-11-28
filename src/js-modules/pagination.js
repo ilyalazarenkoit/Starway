@@ -10,29 +10,19 @@ const filmList = document.querySelector('.film__list');
 export const apiFilms = new Films__API();
 const container = document.getElementById('pagination');
 let formSubmitted = true;
-let totalFilm = 2000;
+let totalFilm = 1000;
 
 homeList.addEventListener('click', () => {
   PaginationLen();
 });
 
 export function PaginationLen(Len) {
-  if (
-    activeList.classList.contains('active') &&
-    handleButtonClickWatch.classList.contains('enable')
-  ) {
-    totalFilm = Len;
-  }
-
-  if (
-    activeList.classList.contains('active') &&
-    handleButtonClickQ.classList.contains('enable')
-  ) {
+  if (activeList.classList.contains('active')) {
     totalFilm = Len;
   }
 
   if (homeList.classList.contains('active')) {
-    totalFilm = 20000;
+    totalFilm = 1000;
   }
 
   const option = {
@@ -82,7 +72,7 @@ export function PaginationLen(Len) {
 }
 
 const options = {
-  totalItems: 20000,
+  totalItems: totalFilm,
   itemsPerPage: 20,
   visiblePages: 5,
   page: 1,
