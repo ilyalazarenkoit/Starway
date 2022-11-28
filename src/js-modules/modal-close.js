@@ -5,7 +5,6 @@ import { addToLibrary } from './localstorage';
 const overlay = document.querySelector('.modal__backdrop');
 const modalCardMovie = document.querySelector('.modal_movie_card');
 const modalClose = document.querySelector('.modal__close-btn');
-
 const pickFilm = document.querySelector('.film__list');
 pickFilm.addEventListener('click', onModalOpenBtn);
 
@@ -18,9 +17,9 @@ pickFilm.addEventListener('click', async event => {
 });
 
 function onModalOpenBtn(event) {
-  if(event.target.nodeName !== "UL") {
+  if (event.target.nodeName !== 'UL') {
     overlay.classList.toggle('is-hidden');
-}
+  }
 }
 
 modalClose.addEventListener('click', onModalCloseBtn);

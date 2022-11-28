@@ -143,6 +143,7 @@ library.addEventListener('click', () => {
 });
 handleButtonClickWatched.addEventListener('click', openWatchedLibrary);
 handleButtonClickQueue.addEventListener('click', openQueueLibrary);
+
 async function renderLibraryFilms(results) {
   return `<li class="film__card" data-id="${results.id}">
   <img class="film__img" src="https://image.tmdb.org/t/p/w500/${
@@ -168,4 +169,3 @@ async function getGenre(genres) {
   let str = processed.join(', ');
   return str;
 }
-

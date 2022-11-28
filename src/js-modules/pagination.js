@@ -38,7 +38,7 @@ export const pagination = new Pagination(container, options);
 
 pagination.on('beforeMove', event => {
   apiFilms.page = event.page;
-  console.log('event', event);
+  // console.log('event', event);
   const methodApi = apiFilms.query ? 'getFilmsByQuery' : 'getPopularMovies';
   apiFilms[methodApi]()
     .then(data => {
