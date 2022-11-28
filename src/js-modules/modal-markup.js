@@ -51,10 +51,10 @@ export function createMarkupMovieInfo({
             <p class="about__description">${overview}</p>
             </div>
             <div class="wrapper_btn">
-                <button class="modal_btn btn_add" type="button" data-id="${id}">add to Watched
+                <button class="modal_btn btn_add" type="button" data-id="${id}">Add to Watched
                 </button>
               
-                <button class="modal_btn btn_queue" type="button" data-id="${id}">add to queue
+                <button class="modal_btn btn_queue" type="button" data-id="${id}">Add to queue
                 </button>
 
                 <button class="modal_btn btn_trailer" type="button" data-id="${id}">Trailer

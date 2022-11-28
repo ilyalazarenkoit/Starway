@@ -2,7 +2,7 @@ import Films__API from './api';
 import Notiflix from 'notiflix';
 import { renderMarkup } from './main-page-default';
 import { apiFilms } from './pagination';
-
+// const filmsApi = new Films__API();
 
 const searchEl = document.querySelector('.header__form');
 
@@ -13,6 +13,7 @@ export function onInputSearch(event) {
   const inputValue = event.currentTarget.elements.search.value
     .trim()
     .toLowerCase();
+  console.log(inputValue);
   if (inputValue === '') {
     Notiflix.Notify.info('Please, type movie name');
     return;

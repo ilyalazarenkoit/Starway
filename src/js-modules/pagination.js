@@ -1,5 +1,5 @@
 import Pagination from 'tui-pagination';
-import { renderMarkup } from './main-page-default';
+import { renderMarkup, fetchTrendingFilms } from './main-page-default';
 import Films__API from './api';
 
 const activeList = document.querySelector('.library');
@@ -13,7 +13,7 @@ let formSubmitted = true;
 let totalFilm = 1000;
 
 homeList.addEventListener('click', () => {
-  PaginationLen();
+  PaginationLen(1000);
 });
 
 export function PaginationLen(Len) {
@@ -22,7 +22,7 @@ export function PaginationLen(Len) {
   }
 
   if (homeList.classList.contains('active')) {
-    totalFilm = 1000;
+    totalFilm = Len;
   }
 
   const option = {
@@ -100,17 +100,26 @@ const options = {
 
 export const pagination = new Pagination(container, options);
 
-pagination.on('beforeMove', event => {
-  apiFilms.page = event.page;
-  // console.log('event', event);
-  const methodApi = apiFilms.query ? 'getFilmsByQuery' : 'getPopularMovies';
-  apiFilms[methodApi]()
-    .then(data => {
-      renderMarkup(data.results);
-      filmList.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
-    })
-    .catch(console.log);
-});
+function enablePagination() {
+  if (divPagination.classList.contains('is-hidden')) {
+    divPagination.classList.remove('is-hidden');
+  }
+  pagination.on('beforeMove', event => {
+    apiFilms.page = event.page;
+    console.log('event', event);
+    const methodApi = apiFilms.query ? 'getFilmsByQuery' : 'getPopularMovies';
+    apiFilms[methodApi]()
+      .then(data => {
+        console.log(data.total_results);
+        options.totalItems = data.total_results;
+        console.log(options.totalItems);
+        renderMarkup(data.results);
+        //   apiFilms.setTotalPages(data.total_pages);
+        filmList.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      })
+      .catch(console.log);
+  });
+}
