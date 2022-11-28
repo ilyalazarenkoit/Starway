@@ -8,6 +8,7 @@ import {
 import { fetchFilmPick, BASE_URl, API_KEY } from './modal-markup';
 import { genres } from './genres';
 import Notiflix from 'notiflix';
+import { PaginationLen } from './pagination';
 
 const arrWatched = [];
 const arrQueue = [];
@@ -112,6 +113,7 @@ function openWatchedLibrary() {
     watched.map(async id => {
       const results = await fetchFilmPick(id);
       film_list.innerHTML += await renderLibraryFilms(results);
+      PaginationLen(watched.length);
     });
   } else {
     Notiflix.Notify.failure('Sorry, films not found');
@@ -127,6 +129,7 @@ function openQueueLibrary() {
     queue.map(async id => {
       const results = await fetchFilmPick(id);
       film_list.innerHTML += await renderLibraryFilms(results);
+      PaginationLen(queue.length);
     });
   } else {
     Notiflix.Notify.failure('Sorry, films not found');
