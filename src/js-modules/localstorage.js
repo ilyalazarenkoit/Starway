@@ -8,10 +8,7 @@ import {
 import { fetchFilmPick, BASE_URl, API_KEY } from './modal-markup';
 import { genres } from './genres';
 import Notiflix from 'notiflix';
-import { divPagination, container } from './pagination';
-import Pagination from 'tui-pagination';
-
-
+import { PaginationLen } from './pagination';
 
 const arrWatched = [];
 const arrQueue = [];
@@ -21,7 +18,7 @@ const checkLibrary = document.querySelector('.render__library');
 const handleWatchedBackdrop = document.querySelector('.modal__backdrop');
 const handleButtonClickWatched = document.querySelector('.library-watched');
 const handleButtonClickQueue = document.querySelector('.library-queue');
-
+// const modalClose = document.querySelector('.modal__close-btn');
 
 export function addToLibrary() {
   if (handleWatchedBackdrop) {
@@ -63,7 +60,7 @@ export function addToLibrary() {
         ) {
           openWatchedLibrary();
           modalCardMovie.innerHTML = '';
-          handleWatchedBackdrop.classList.toggle('is-hidden');
+          handleWatchedBackdrop.classList.add('is-hidden');
         }
         Notiflix.Notify.success('Film remove from watched library');
         return;
@@ -110,13 +107,13 @@ export function addToLibrary() {
 
 function openWatchedLibrary() {
   film_list.innerHTML = '';
-  divPagination.classList.add("is-hidden")
   const unparsedWatched = localStorage.getItem('arrWatched');
   const watched = JSON.parse(unparsedWatched);
   if (watched.length > 0) {
     watched.map(async id => {
       const results = await fetchFilmPick(id);
       film_list.innerHTML += await renderLibraryFilms(results);
+      PaginationLen(watched.length);
     });
   } else {
     Notiflix.Notify.failure('Sorry, films not found');
@@ -126,13 +123,13 @@ function openWatchedLibrary() {
 
 function openQueueLibrary() {
   film_list.innerHTML = '';
-  divPagination.classList.add("is-hidden")
   const unparsedQueue = localStorage.getItem('arrQueue');
   const queue = JSON.parse(unparsedQueue);
   if (queue.length > 0) {
     queue.map(async id => {
       const results = await fetchFilmPick(id);
       film_list.innerHTML += await renderLibraryFilms(results);
+      PaginationLen(queue.length);
     });
   } else {
     Notiflix.Notify.failure('Sorry, films not found');
@@ -147,9 +144,9 @@ library.addEventListener('click', () => {
     openQueueLibrary();
   }
 });
-
 handleButtonClickWatched.addEventListener('click', openWatchedLibrary);
 handleButtonClickQueue.addEventListener('click', openQueueLibrary);
+
 async function renderLibraryFilms(results) {
   return `<li class="film__card" data-id="${results.id}">
   <img class="film__img" src="https://image.tmdb.org/t/p/w500/${
@@ -175,4 +172,3 @@ async function getGenre(genres) {
   let str = processed.join(', ');
   return str;
 }
-
